@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[next博客进阶]]></title>
+    <url>%2F2017%2F08%2F28%2Fnext%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%2F</url>
+    <content type="text"><![CDATA[摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景 正文:next添加RSS1、 进入本地hexo目录,输入以下命令:install hexo-generator-feed```12##### 2、 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置: ExtensionsPlugins: http://hexo.io/plugins/#RSS订阅plugin: hexo-generator-feed#Feed Atomfeed:type: atompath: atom.xmllimit: 2012##### 3、添加主题配置，在主题目录下的_config.yml目录下，添加如下配置: rss: /atom.xml12345# 字数统计及阅读时长##### 1、Install npm install hexo-wordcount –save12345678910111213141516171819##### 2、修改对应的代码（blog/themes/next/layout/_macro/post.swig） &lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt; &#123;&#123; wordcount(post.content) &#125;&#125; 字 &lt;/span&gt; &lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt; &#123;&#123; min2read(post.content) &#125;&#125; 分钟 &lt;/span&gt;# next主题修改动态背景(这里只说next主题在5.1.1以上版本)##### 在对应的目录下修改(blog/themes/next/_config.yml)自行尝试 Canvas-nestcanvas_nest: true three_wavesthree_waves: false canvas_linescanvas_lines: false canvas_spherecanvas_sphere: false Only fit scheme PiscesCanvas-ribboncanvas_ribbon: true```]]></content>
+      <categories>
+        <category>日志</category>
+        <category>二级目录</category>
+      </categories>
+      <tags>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jetbrains软件(WS、IJ)]]></title>
     <url>%2F2017%2F08%2F28%2F%E7%A0%B4%E8%A7%A3Jetbrains%E8%BD%AF%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[摘要: 破解Jetbrains软件 正文:Ubuntu下面 PHPSTORM2017.2破解方法 在 http://idea.lanyus.com/上面新下载一个破解文件。 破解步骤 将JetbrainsCrack-2.6.3_proc.jar放到phpstorm安装目录的lib文件夹下面 进入到phpstorm安装目录的bin目录下面。找到phpstorm64.vmoptions文件，然后打开，在最后面一行输入-javaagent:/opt/phpstorm2017/lib/JetbrainsCrack-2.6.3_proc.jar保存文件。 打开http://idea.lanyus.com/getkey?userName=username username可以随便更改成你想要的，然后生成一个激活码， 再打开phpstorm，选择Activation Code选项，将生成的激活码复制进去，然后激活。 完结 重启phpstorm，然后就可以开始coding之路了。]]></content>
@@ -23,10 +35,5 @@
       <tags>
         <tag>macdown</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F08%2F25%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
