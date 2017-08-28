@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  238 字
+                  262 字
                 </span>
               
 
@@ -453,23 +453,14 @@
 
       
         
-          
-            <p>摘要:<br>    next添加RSS、字数统计及阅读时长、next主题修改动态背景</p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文:"></a>正文:</h2><h1 id="next添加RSS"><a href="#next添加RSS" class="headerlink" title="next添加RSS"></a>next添加RSS</h1><h5 id="1、-进入本地hexo目录-输入以下命令"><a href="#1、-进入本地hexo目录-输入以下命令" class="headerlink" title="1、 进入本地hexo目录,输入以下命令:"></a>1、 进入本地hexo目录,输入以下命令:</h5><figure class="highlight plain"><figcaption><span>install hexo-generator-feed```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 2、 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:</div></pre></td></tr></table></figure>
-<h1 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h1><h2 id="Plugins-http-hexo-io-plugins"><a href="#Plugins-http-hexo-io-plugins" class="headerlink" title="Plugins: http://hexo.io/plugins/"></a>Plugins: <a href="http://hexo.io/plugins/" target="_blank" rel="external">http://hexo.io/plugins/</a></h2><p>#RSS订阅<br>plugin:</p>
-<ul>
-<li>hexo-generator-feed<br>#Feed Atom<br>feed:<br>type: atom<br>path: atom.xml<br>limit: 20<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 3、添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>rss: /atom.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"># 字数统计及阅读时长</div><div class="line"></div><div class="line">##### 1、Install</div></pre></td></tr></table></figure></p>
-<p>npm install hexo-wordcount –save<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">##### 2、修改对应的代码（blog/themes/next/layout/_macro/post.swig）</div><div class="line"></div><div class="line"></div><div class="line">	&lt;span title=&quot;&#123;&#123; __(&apos;post.wordcount&apos;) &#125;&#125;&quot;&gt;</div><div class="line">  		&#123;&#123; wordcount(post.content) &#125;&#125; 字</div><div class="line">	&lt;/span&gt;</div><div class="line"></div><div class="line"></div><div class="line">	&lt;span title=&quot;&#123;&#123; __(&apos;post.min2read&apos;) &#125;&#125;&quot;&gt;</div><div class="line"> 	 &#123;&#123; min2read(post.content) &#125;&#125; 分钟</div><div class="line">	&lt;/span&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># next主题修改动态背景(这里只说next主题在5.1.1以上版本)</div><div class="line"></div><div class="line"></div><div class="line">##### 在对应的目录下修改(blog/themes/next/_config.yml)自行尝试</div></pre></td></tr></table></figure></p>
-<h1 id="Canvas-nest"><a href="#Canvas-nest" class="headerlink" title="Canvas-nest"></a>Canvas-nest</h1><p>canvas_nest: true</p>
-<h1 id="three-waves"><a href="#three-waves" class="headerlink" title="three_waves"></a>three_waves</h1><p>three_waves: false</p>
-<h1 id="canvas-lines"><a href="#canvas-lines" class="headerlink" title="canvas_lines"></a>canvas_lines</h1><p>canvas_lines: false</p>
-<h1 id="canvas-sphere"><a href="#canvas-sphere" class="headerlink" title="canvas_sphere"></a>canvas_sphere</h1><p>canvas_sphere: false</p>
-<h1 id="Only-fit-scheme-Pisces"><a href="#Only-fit-scheme-Pisces" class="headerlink" title="Only fit scheme Pisces"></a>Only fit scheme Pisces</h1><h1 id="Canvas-ribbon"><a href="#Canvas-ribbon" class="headerlink" title="Canvas-ribbon"></a>Canvas-ribbon</h1><p>canvas_ribbon: true<br>```</p>
-
-          
+          <p>摘要:<br>    next添加RSS、字数统计及阅读时长、next主题修改动态背景<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/28/next博客进阶/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
