@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="摘要:    next添加RSS、字数统计及阅读时长、next主题修改动态背景">
+<meta name="description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
 <meta name="keywords" content="next">
 <meta property="og:type" content="article">
 <meta property="og:title" content="next博客进阶">
 <meta property="og:url" content="https://hua74ni.github.io/2017/08/28/next博客进阶/index.html">
 <meta property="og:site_name" content="华仔的博客">
-<meta property="og:description" content="摘要:    next添加RSS、字数统计及阅读时长、next主题修改动态背景">
+<meta property="og:description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-28T09:23:20.000Z">
+<meta property="og:updated_time" content="2017-08-30T06:35:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="next博客进阶">
-<meta name="twitter:description" content="摘要:    next添加RSS、字数统计及阅读时长、next主题修改动态背景">
+<meta name="twitter:description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
 
 
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  262 字
+                  255 字
                 </span>
               
 
@@ -450,12 +450,30 @@
       
 
       
-        <p>摘要:<br>    next添加RSS、字数统计及阅读时长、next主题修改动态背景<br>    <a id="more"></a></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文:"></a>正文:</h2><h1 id="next添加RSS"><a href="#next添加RSS" class="headerlink" title="next添加RSS"></a>next添加RSS</h1><h5 id="1、-进入本地hexo目录-输入以下命令"><a href="#1、-进入本地hexo目录-输入以下命令" class="headerlink" title="1、 进入本地hexo目录,输入以下命令:"></a>1、 进入本地hexo目录,输入以下命令:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed</div></pre></td></tr></table></figure>
-<h5 id="2、-添加配置，在本地hexo根目录下的-config-yml文件中，添加以下配置"><a href="#2、-添加配置，在本地hexo根目录下的-config-yml文件中，添加以下配置" class="headerlink" title="2、 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:"></a>2、 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">#RSS订阅</div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">type: atom</div><div class="line">path: atom.xml</div><div class="line">limit: 20</div></pre></td></tr></table></figure>
-<h5 id="3、添加主题配置，在主题目录下的-config-yml目录下，添加如下配置"><a href="#3、添加主题配置，在主题目录下的-config-yml目录下，添加如下配置" class="headerlink" title="3、添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:"></a>3、添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
-<h1 id="字数统计及阅读时长"><a href="#字数统计及阅读时长" class="headerlink" title="字数统计及阅读时长"></a>字数统计及阅读时长</h1><h5 id="1、Install"><a href="#1、Install" class="headerlink" title="1、Install"></a>1、Install</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-wordcount --save</div></pre></td></tr></table></figure>
-<h5 id="2、修改对应的代码（blog-themes-next-layout-macro-post-swig）"><a href="#2、修改对应的代码（blog-themes-next-layout-macro-post-swig）" class="headerlink" title="2、修改对应的代码（blog/themes/next/layout/_macro/post.swig）"></a>2、修改对应的代码（blog/themes/next/layout/_macro/post.swig）</h5><pre><code>&lt;span title=&quot;{{ __('post.wordcount') }}&quot;&gt;
+        <p>摘要:</p>
+<pre><code>next添加RSS、字数统计及阅读时长、next主题修改动态背景
+</code></pre><hr>
+<a id="more"></a>
+<h1 id="next添加RSS"><a href="#next添加RSS" class="headerlink" title="next添加RSS"></a>next添加RSS</h1><ul>
+<li><strong>进入本地hexo目录,输入以下命令:</strong>  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">#RSS订阅</div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">type: atom</div><div class="line">path: atom.xml</div><div class="line">limit: 20</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
+<h1 id="字数统计及阅读时长"><a href="#字数统计及阅读时长" class="headerlink" title="字数统计及阅读时长"></a>字数统计及阅读时长</h1><ul>
+<li><strong>Install</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-wordcount --save</div></pre></td></tr></table></figure>
+<ul>
+<li><em>*修改对应的代码（blog/themes/next/layout/_macro/post.swig）</em></li>
+</ul>
+<pre><code>&lt;span title=&quot;{{ __('post.wordcount') }}&quot;&gt;
       {{ wordcount(post.content) }} 字
 &lt;/span&gt;
 
@@ -463,8 +481,11 @@
 &lt;span title=&quot;{{ __('post.min2read') }}&quot;&gt;
   {{ min2read(post.content) }} 分钟
 &lt;/span&gt;
-</code></pre><h1 id="next主题修改动态背景-这里只说next主题在5-1-1以上版本"><a href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本" class="headerlink" title="next主题修改动态背景(这里只说next主题在5.1.1以上版本)"></a>next主题修改动态背景(这里只说next主题在5.1.1以上版本)</h1><h5 id="在对应的目录下修改-blog-themes-next-config-yml-自行尝试"><a href="#在对应的目录下修改-blog-themes-next-config-yml-自行尝试" class="headerlink" title="在对应的目录下修改(blog/themes/next/_config.yml)自行尝试"></a>在对应的目录下修改(blog/themes/next/_config.yml)自行尝试</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># Canvas-nest</div><div class="line">canvas_nest: true</div><div class="line"></div><div class="line"># three_waves</div><div class="line">three_waves: false</div><div class="line"></div><div class="line"># canvas_lines</div><div class="line">canvas_lines: false</div><div class="line"></div><div class="line"># canvas_sphere</div><div class="line">canvas_sphere: false</div><div class="line"></div><div class="line"># Only fit scheme Pisces</div><div class="line"># Canvas-ribbon</div><div class="line">canvas_ribbon: true</div></pre></td></tr></table></figure>
-<h2 id="参考的网站："><a href="#参考的网站：" class="headerlink" title="参考的网站："></a>参考的网站：</h2><p><a href="http://www.jianshu.com/p/e122fc6f5946" target="_blank" rel="external">Hexo文章计数插件WordCount</a><br><a href="http://blog.csdn.net/u011303443/article/details/52333695" target="_blank" rel="external">hexo博客安装RSS插件</a><br><a href="http://shenzekun.cn/hexo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.html" target="_blank" rel="external">next主题如何添加动态背景</a></p>
+</code></pre><h1 id="next主题修改动态背景-这里只说next主题在5-1-1以上版本"><a href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本" class="headerlink" title="next主题修改动态背景(这里只说next主题在5.1.1以上版本)"></a>next主题修改动态背景(这里只说next主题在5.1.1以上版本)</h1><ul>
+<li><strong>在对应的目录下修改(blog/themes/next/_config.yml)自行尝试</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># Canvas-nest</div><div class="line">canvas_nest: true</div><div class="line"></div><div class="line"># three_waves</div><div class="line">three_waves: false</div><div class="line"></div><div class="line"># canvas_lines</div><div class="line">canvas_lines: false</div><div class="line"></div><div class="line"># canvas_sphere</div><div class="line">canvas_sphere: false</div><div class="line"></div><div class="line"># Only fit scheme Pisces</div><div class="line"># Canvas-ribbon</div><div class="line">canvas_ribbon: true</div></pre></td></tr></table></figure>
+<h1 id="参考的网站："><a href="#参考的网站：" class="headerlink" title="参考的网站："></a>参考的网站：</h1><p><a href="http://www.jianshu.com/p/e122fc6f5946" target="_blank" rel="external">Hexo文章计数插件WordCount</a><br><a href="http://blog.csdn.net/u011303443/article/details/52333695" target="_blank" rel="external">hexo博客安装RSS插件</a><br><a href="http://shenzekun.cn/hexo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.html" target="_blank" rel="external">next主题如何添加动态背景</a></p>
 
       
     </div>
@@ -704,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">1.</span> <span class="nav-text">正文:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next添加RSS"><span class="nav-number"></span> <span class="nav-text">next添加RSS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、-进入本地hexo目录-输入以下命令"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">1、 进入本地hexo目录,输入以下命令:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、-添加配置，在本地hexo根目录下的-config-yml文件中，添加以下配置"><span class="nav-number">0.0.0.2.</span> <span class="nav-text">2、 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、添加主题配置，在主题目录下的-config-yml目录下，添加如下配置"><span class="nav-number">0.0.0.3.</span> <span class="nav-text">3、添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字数统计及阅读时长"><span class="nav-number"></span> <span class="nav-text">字数统计及阅读时长</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、Install"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">1、Install</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、修改对应的代码（blog-themes-next-layout-macro-post-swig）"><span class="nav-number">0.0.0.2.</span> <span class="nav-text">2、修改对应的代码（blog/themes/next/layout/_macro/post.swig）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本"><span class="nav-number"></span> <span class="nav-text">next主题修改动态背景(这里只说next主题在5.1.1以上版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#在对应的目录下修改-blog-themes-next-config-yml-自行尝试"><span class="nav-number">0.0.0.1.</span> <span class="nav-text">在对应的目录下修改(blog/themes/next/_config.yml)自行尝试</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考的网站："><span class="nav-number">1.</span> <span class="nav-text">参考的网站：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#next添加RSS"><span class="nav-number">1.</span> <span class="nav-text">next添加RSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字数统计及阅读时长"><span class="nav-number">2.</span> <span class="nav-text">字数统计及阅读时长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本"><span class="nav-number">3.</span> <span class="nav-text">next主题修改动态背景(这里只说next主题在5.1.1以上版本)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考的网站："><span class="nav-number">4.</span> <span class="nav-text">参考的网站：</span></a></li></ol></div>
             
 
           </div>
