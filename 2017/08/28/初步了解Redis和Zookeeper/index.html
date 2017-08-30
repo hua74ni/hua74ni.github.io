@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要:    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T08:12:13.000Z">
+<meta property="og:updated_time" content="2017-08-30T08:16:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初步了解Redis和ZooKeeper">
 <meta name="twitter:description" content="摘要:    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper">
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  999 字
+                  998 字
                 </span>
               
 
@@ -457,7 +457,7 @@
 <li><strong>操作具有原子性</strong> - 所有Redis操作都是原子操作，这确保如果两个客户端并发访问，Redis服务器能接收更新的值。</li>
 <li><p><strong>多实用工具</strong> - Redis是一个多实用工具，可用于多种用例，如：缓存，消息队列(Redis本地支持发布/订阅)，应用程序中的任何短期数据，例如，web应用程序中的会话，网页命中计数等。</p>
 <blockquote>
-<p>“原子操作(atomic operation)是不需要synchronized”，这是Java多线程编程的老生常谈了。所谓原子操作是指不会被线程调度机制打断的操作；这种操作一旦开始，就一直运行到结束，中间不会有任何 context switch （切[1]  换到另一个线程）             —- 度娘</p>
+<p>“原子操作(atomic operation)是不需要synchronized”，这是Java多线程编程的老生常谈了。所谓原子操作是指不会被线程调度机制打断的操作；这种操作一旦开始，就一直运行到结束，中间不会有任何 context switch （切换到另一个线程）             —- 度娘</p>
 </blockquote>
 </li>
 </ul>
@@ -472,10 +472,10 @@
 </ol>
 <h1 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h1><ol>
 <li><p><strong>首先需要了解分布式系统（distributed system）</strong></p>
-<p> 建立在网络之上的软件系统。正是因为软件的特性，所以分布式系统具有高度的内聚性和透明性。在分布式数据库系统中，用户感觉不到数据是分布的，即用户不须知道关系是否分割、有无副本、数据存于哪个站点以及事务在哪个站点上执行等。</p>
+<p> 建立在网络之上的软件系统。正是因为软件的特性，所以分布式系统具有高度的<code>内聚性</code>和<code>透明性</code>。在分布式数据库系统中，用户感觉不到数据是分布的，即用户不须知道关系是否分割、有无副本、数据存于哪个站点以及事务在哪个站点上执行等。</p>
 <ul>
-<li>内聚性是指每一个数据库分布节点高度自治，有本地的数据库管理系统。</li>
-<li>透明性是指每一个数据库分布节点对用户的应用来说都是透明的，看不出是本地还是远程。</li>
+<li><code>内聚性</code>是指每一个数据库分布节点高度自治，有本地的数据库管理系统。</li>
+<li><code>透明性</code>是指每一个数据库分布节点对用户的应用来说都是透明的，看不出是本地还是远程。</li>
 </ul>
 </li>
 <li><p><strong>了解分布式协调技术</strong></p>
