@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="个人博客," />
+  <meta name="keywords" content="Redis & ZooKeeper," />
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
-<meta name="keywords" content="个人博客">
+<meta name="description" content="摘要:    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper">
+<meta name="keywords" content="Redis &amp; ZooKeeper">
 <meta property="og:type" content="article">
-<meta property="og:title" content="next博客进阶">
-<meta property="og:url" content="https://hua74ni.github.io/2017/08/28/next博客进阶/index.html">
+<meta property="og:title" content="初步了解Redis和ZooKeeper">
+<meta property="og:url" content="https://hua74ni.github.io/2017/08/28/初步了解Redis和Zookeeper/index.html">
 <meta property="og:site_name" content="华仔的博客">
-<meta property="og:description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
+<meta property="og:description" content="摘要:    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T07:34:38.000Z">
+<meta property="og:updated_time" content="2017-08-30T08:12:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="next博客进阶">
-<meta name="twitter:description" content="摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景">
+<meta name="twitter:title" content="初步了解Redis和ZooKeeper">
+<meta name="twitter:description" content="摘要:    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://hua74ni.github.io/2017/08/28/next博客进阶/"/>
+  <link rel="canonical" href="https://hua74ni.github.io/2017/08/28/初步了解Redis和Zookeeper/"/>
 
 
 
 
 
-  <title>next博客进阶 | 华仔的博客</title>
+  <title>初步了解Redis和ZooKeeper | 华仔的博客</title>
   
 
 
@@ -319,7 +319,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hua74ni.github.io/2017/08/28/next博客进阶/">
+    <link itemprop="mainEntityOfPage" href="https://hua74ni.github.io/2017/08/28/初步了解Redis和Zookeeper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="华仔">
@@ -336,7 +336,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">next博客进阶</h1>
+          <h1 class="post-title" itemprop="name headline">初步了解Redis和ZooKeeper</h1>
         
 
         <div class="post-meta">
@@ -371,8 +371,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/next进阶/" itemprop="url" rel="index">
-                    <span itemprop="name">next进阶</span>
+                  <a href="/categories/Redis-ZooKeeper/" itemprop="url" rel="index">
+                    <span itemprop="name">Redis & ZooKeeper</span>
                   </a>
                 </span>
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  255 字
+                  999 字
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -439,42 +439,57 @@
       
 
       
-        <p>摘要:</p>
-<pre><code>next添加RSS、字数统计及阅读时长、next主题修改动态背景
-</code></pre><hr>
+        <p>摘要:<br>    初步了解Redis和ZooKeeper作用及使用场景;mac依赖brew快速安装Redis和ZooKeeper</p>
+<hr>
 <a id="more"></a>
-<h1 id="next添加RSS"><a href="#next添加RSS" class="headerlink" title="next添加RSS"></a>next添加RSS</h1><ul>
-<li><strong>进入本地hexo目录,输入以下命令:</strong>  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-feed</div></pre></td></tr></table></figure>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p>Redis是一个开源，高级的键值存储和一个适用的解决方案，用于构建高性能，可扩展的Web应用程序。(键值对 key-value)</p>
+<p>Redis有三个主要特点，使它优越于其它键值数据存储系统:</p>
 <ul>
-<li><strong>添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置:</strong></li>
+<li>Redis将其数据库完全保存在内存中，仅使用磁盘进行持久化。</li>
+<li>与其它键值数据存储相比，Redis有一组相对丰富的数据类型。</li>
+<li>Redis可以将数据复制到任意数量的从机中。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">#RSS订阅</div><div class="line">plugin:</div><div class="line">- hexo-generator-feed</div><div class="line">#Feed Atom</div><div class="line">feed:</div><div class="line">type: atom</div><div class="line">path: atom.xml</div><div class="line">limit: 20</div></pre></td></tr></table></figure>
+<ol>
+<li><p><strong>Redis的优点</strong></p>
 <ul>
-<li><strong>添加主题配置，在主题目录下的_config.yml目录下，添加如下配置:</strong></li>
+<li><strong>异常快</strong> - Redis非常快，每秒可执行大约 ==110000== 次的设置( ==SET== )操作，每秒大约可执行81000次的读取/获取( ==GET== )操作。</li>
+<li><strong>支持丰富的数据类型</strong> - Redis支持开发人员常用的大多数数据类型，例如列表，集合，排序集和散列等等。这使得Redis很容易被用来解决各种问题，因为我们知道哪些问题可以更好使用地哪些数据类型来处理解决。</li>
+<li><strong>操作具有原子性</strong> - 所有Redis操作都是原子操作，这确保如果两个客户端并发访问，Redis服务器能接收更新的值。</li>
+<li><p><strong>多实用工具</strong> - Redis是一个多实用工具，可用于多种用例，如：缓存，消息队列(Redis本地支持发布/订阅)，应用程序中的任何短期数据，例如，web应用程序中的会话，网页命中计数等。</p>
+<blockquote>
+<p>“原子操作(atomic operation)是不需要synchronized”，这是Java多线程编程的老生常谈了。所谓原子操作是指不会被线程调度机制打断的操作；这种操作一旦开始，就一直运行到结束，中间不会有任何 context switch （切[1]  换到另一个线程）             —- 度娘</p>
+</blockquote>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure>
-<h1 id="字数统计及阅读时长"><a href="#字数统计及阅读时长" class="headerlink" title="字数统计及阅读时长"></a>字数统计及阅读时长</h1><ul>
-<li><strong>Install</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-wordcount --save</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Redis与其他键值存储系统</strong></p>
 <ul>
-<li><em>*修改对应的代码（blog/themes/next/layout/_macro/post.swig）</em></li>
+<li>Redis是键值数据库系统的不同进化路线，它的值可以包含更复杂的数据类型，可在这些数据类型上定义原子操作。</li>
+<li>Redis是一个内存数据库，但在磁盘数据库上是持久的，因此它代表了一个不同的权衡，在这种情况下，在不能大于存储器(内存)的数据集的限制下实现非常高的写和读速度。</li>
+<li>内存数据库的另一个优点是，它与磁盘上的相同数据结构相比，复杂数据结构在内存中存储表示更容易操作。 因此，Redis可以做很少的内部复杂性。</li>
 </ul>
-<pre><code>&lt;span title=&quot;{{ __('post.wordcount') }}&quot;&gt;
-      {{ wordcount(post.content) }} 字
-&lt;/span&gt;
-
-
-&lt;span title=&quot;{{ __('post.min2read') }}&quot;&gt;
-  {{ min2read(post.content) }} 分钟
-&lt;/span&gt;
-</code></pre><h1 id="next主题修改动态背景-这里只说next主题在5-1-1以上版本"><a href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本" class="headerlink" title="next主题修改动态背景(这里只说next主题在5.1.1以上版本)"></a>next主题修改动态背景(这里只说next主题在5.1.1以上版本)</h1><ul>
-<li><strong>在对应的目录下修改(blog/themes/next/_config.yml)自行尝试</strong></li>
+</li>
+</ol>
+<h1 id="ZooKeeper"><a href="#ZooKeeper" class="headerlink" title="ZooKeeper"></a>ZooKeeper</h1><ol>
+<li><p><strong>首先需要了解分布式系统（distributed system）</strong></p>
+<p> 建立在网络之上的软件系统。正是因为软件的特性，所以分布式系统具有高度的内聚性和透明性。在分布式数据库系统中，用户感觉不到数据是分布的，即用户不须知道关系是否分割、有无副本、数据存于哪个站点以及事务在哪个站点上执行等。</p>
+<ul>
+<li>内聚性是指每一个数据库分布节点高度自治，有本地的数据库管理系统。</li>
+<li>透明性是指每一个数据库分布节点对用户的应用来说都是透明的，看不出是本地还是远程。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># Canvas-nest</div><div class="line">canvas_nest: true</div><div class="line"></div><div class="line"># three_waves</div><div class="line">three_waves: false</div><div class="line"></div><div class="line"># canvas_lines</div><div class="line">canvas_lines: false</div><div class="line"></div><div class="line"># canvas_sphere</div><div class="line">canvas_sphere: false</div><div class="line"></div><div class="line"># Only fit scheme Pisces</div><div class="line"># Canvas-ribbon</div><div class="line">canvas_ribbon: true</div></pre></td></tr></table></figure>
-<h1 id="参考的网站："><a href="#参考的网站：" class="headerlink" title="参考的网站："></a>参考的网站：</h1><p><a href="http://www.jianshu.com/p/e122fc6f5946" target="_blank" rel="external">Hexo文章计数插件WordCount</a><br><a href="http://blog.csdn.net/u011303443/article/details/52333695" target="_blank" rel="external">hexo博客安装RSS插件</a><br><a href="http://shenzekun.cn/hexo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.html" target="_blank" rel="external">next主题如何添加动态背景</a></p>
+</li>
+<li><p><strong>了解分布式协调技术</strong></p>
+<p>主要用来解决分布式环境当中多个进程之间的同步控制，让他们有序的去访问某种临界资源，防止造成”脏数据”的后果。</p>
+</li>
+<li><p><strong>分布式协调技术的核心就是实现分布式锁</strong></p>
+</li>
+</ol>
+<h1 id="顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过-Homebrew-）"><a href="#顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过-Homebrew-）" class="headerlink" title="顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过 ==Homebrew== ）"></a>顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过 ==Homebrew== ）</h1><pre><code>[Homebrew官方](https://brew.sh/)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">安装 Homebrew ：</div><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div><div class="line"></div><div class="line">安装 Redis ：</div><div class="line">brew install redis</div><div class="line"></div><div class="line">安装 ZooKeeper ：</div><div class="line">brew install zookeeper</div></pre></td></tr></table></figure>
+<h1 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h1><ul>
+<li><a href="http://www.yiibai.com/redis/redis_quick_guide.html" target="_blank" rel="external">Redis快速入门</a>  </li>
+<li><a href="http://www.cnblogs.com/wuxl360/p/5817471.html" target="_blank" rel="external">ZooKeeper学习第一期—Zookeeper简单介绍</a></li>
+</ul>
 
       
     </div>
@@ -492,7 +507,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+            <a href="/tags/Redis-ZooKeeper/" rel="tag"># Redis & ZooKeeper</a>
           
         </div>
       
@@ -505,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/28/初步了解Redis和Zookeeper/" rel="next" title="初步了解Redis和ZooKeeper">
-                <i class="fa fa-chevron-left"></i> 初步了解Redis和ZooKeeper
+              <a href="/2017/08/28/破解Jetbrains软件/" rel="next" title="Jetbrains软件(WS、IJ)">
+                <i class="fa fa-chevron-left"></i> Jetbrains软件(WS、IJ)
               </a>
             
           </div>
@@ -514,6 +529,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/28/next博客进阶/" rel="prev" title="next博客进阶">
+                next博客进阶 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -714,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#next添加RSS"><span class="nav-number">1.</span> <span class="nav-text">next添加RSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字数统计及阅读时长"><span class="nav-number">2.</span> <span class="nav-text">字数统计及阅读时长</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next主题修改动态背景-这里只说next主题在5-1-1以上版本"><span class="nav-number">3.</span> <span class="nav-text">next主题修改动态背景(这里只说next主题在5.1.1以上版本)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考的网站："><span class="nav-number">4.</span> <span class="nav-text">参考的网站：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ZooKeeper"><span class="nav-number">2.</span> <span class="nav-text">ZooKeeper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过-Homebrew-）"><span class="nav-number">3.</span> <span class="nav-text">顺带提下mac上安装Redis和ZooKeeper很快捷（需要已经安装过 ==Homebrew== ）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考网站"><span class="nav-number">4.</span> <span class="nav-text">参考网站</span></a></li></ol></div>
             
 
           </div>
