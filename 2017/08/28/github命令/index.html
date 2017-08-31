@@ -104,12 +104,13 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要:    github命令">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://hua74ni.github.io/images/git_repository.png">
-<meta property="og:updated_time" content="2017-08-31T09:01:37.000Z">
+<meta property="og:image" content="https://hua74ni.github.io/images/github/git_repository.png">
+<meta property="og:image" content="https://hua74ni.github.io/images/github/stash.png">
+<meta property="og:updated_time" content="2017-08-31T09:29:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github命令">
 <meta name="twitter:description" content="摘要:    github命令">
-<meta name="twitter:image" content="https://hua74ni.github.io/images/git_repository.png">
+<meta name="twitter:image" content="https://hua74ni.github.io/images/github/git_repository.png">
 
 
 
@@ -404,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  741 字
+                  838 字
                 </span>
               
 
@@ -420,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -450,7 +451,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone http://bogon/huangdonghua/mytest.git</div><div class="line">输入对应的账号密码</div></pre></td></tr></table></figure>
 <p><strong>3、 查看状态</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
-<p><img src="/images/git_repository.png" alt="本地github仓库"></p>
+<p><img src="/images/github/git_repository.png" alt="本地github仓库"></p>
 <p><strong>4、 把</strong> <code>myTest/test.txt</code> <strong>文件添加到本地Git仓库，将myTest一并add</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add myTest/</div></pre></td></tr></table></figure>
 <p><strong>5、 可以选择设置下自己的用户名与邮箱</strong></p>
@@ -475,6 +476,16 @@
 <p><strong>在mac下 SSH Key设置：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ cd ~/.ssh/</div><div class="line">$ ls</div><div class="line">如果看到 id_rsa id_rsa.pub 这2个文件就说明已经有了SSH Key；</div><div class="line">这时候只要 vim id_rsa.pub 赋值就可以了</div><div class="line">如果没有：</div><div class="line">	ssh-keygen -t rsa</div><div class="line">	选择默认和输入密码就可以省下就和上面一样了</div></pre></td></tr></table></figure>
 <h1 id="其余git命令"><a href="#其余git命令" class="headerlink" title="其余git命令"></a>其余git命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">git branch aaa 新建分枝aaa  </div><div class="line">git branch 查看分枝  </div><div class="line">git checkout aaa 切换到分枝aaa  </div><div class="line">git checkout -b aaa 新建并切换到aaa  </div><div class="line">git merge aaa 把aaa分支的代码合并过来(当前所在分枝，比如master)  </div><div class="line">git branch -d aaa 删除分枝aaa  </div><div class="line">git branch -D aaa 强制删除aaa  </div><div class="line">git tag v1.0 加版本号  </div><div class="line">git tag 查看版本号  </div><div class="line">git checkout v1.0 切换到版本v1.0</div><div class="line">//恢复某个文件的修改，若存在暂存区域的话，就恢复到暂存区域的状态，</div><div class="line">//若不存在暂存区域的话，就恢复到本地库的状态。</div><div class="line">git checkout 文件名</div><div class="line">//下面的.是表示所有文件</div><div class="line">git checkout .</div><div class="line">//若存在暂存区域，就是工作区与暂存区域的具体差异，</div><div class="line">若不存在暂存区域，则是工作区与本地库的具体差异。</div><div class="line">git diff</div></pre></td></tr></table></figure>
+<h1 id="懒人避免冲突的方式："><a href="#懒人避免冲突的方式：" class="headerlink" title="懒人避免冲突的方式："></a>懒人避免冲突的方式：</h1><p><strong>先将本地修改存储起来</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash</div></pre></td></tr></table></figure>
+<p><strong>这样本地的所有修改就都被暂时存储起来</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git stash list</div><div class="line">git stash暂存修改</div><div class="line">其中stash@&#123;0&#125;就是刚才保存的标记。</div></pre></td></tr></table></figure>
+<p><img src="/images/github/stash.png" alt="stash"></p>
+<p><strong>暂存了本地修改之后，就可以pull了</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull</div></pre></td></tr></table></figure>
+<p><strong>还原暂存的内容</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git stash pop stash@&#123;0&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/juandx/p/5362723.html" target="_blank" rel="external">详细懒人方式</a></p>
 
       
     </div>
@@ -748,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github使用的基本步骤-mac环境"><span class="nav-number">1.</span> <span class="nav-text">github使用的基本步骤 mac环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其余git命令"><span class="nav-number">2.</span> <span class="nav-text">其余git命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github使用的基本步骤-mac环境"><span class="nav-number">1.</span> <span class="nav-text">github使用的基本步骤 mac环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其余git命令"><span class="nav-number">2.</span> <span class="nav-text">其余git命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#懒人避免冲突的方式："><span class="nav-number">3.</span> <span class="nav-text">懒人避免冲突的方式：</span></a></li></ol></div>
             
 
           </div>
