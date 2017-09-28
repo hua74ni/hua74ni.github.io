@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[mac_eclipse调制代码方式]]></title>
     <url>%2F2017%2F09%2F20%2Feclipse%E8%B0%83%E5%88%B6%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[摘要: mac_eclipse调制代码方式 调制代码时，常用到的方式shift + command + T -&gt; Open Type control + H -&gt; Search (File Search、Java Search …) command + O -&gt; 查看该class中的方法和成员变量 command + e -&gt; 快速转换编辑器 option + command + 上下 -&gt; 将高亮显示处往上或下复制 command + m -&gt; 窗口最大化切换 command + / -&gt; 自动注释掉选择的代码块 command + shift + / -&gt; 自动注释掉选择的代码块 command + shift + X 和 command + shift + Y -&gt; 英文字母大小写的转换 command +shift + O -&gt; 自动引入包和删除无用包 debug模式情况下：想立刻执行一条语句刚写的语句，此时断点正在附近: command + U 左边的是将所有包缩小 右边勾选 会自动跟从你所浏览的代码所在的包的位置 Projects Presentation(项目介绍)展示方式： Flat（平坦式 一大串）； Hierarchical（分等级式 像ztree的感觉） Variables 可以在debug时看到对应的变量的情况BreakPoints 可以在这里看到你打得断点的信息（位置，数量，也可以对端点进行操作）Expressions 在端点执行过程中 执行想要的方法 对Tomcat进行部分操作修改Servers中某个Tomcat的config(后台代码修改不会导致Tomcat重启) server.xml： 修改最后几行的 Context标签中 reloadable=”false” debug=”0” 现在有个很好用的插件不需要上面的配置就可以实现 后台代码修改即可以使用，不需要重启Tomcat。JRebel 支持 eclipse、Intelli IDEA、android studio 对Git进行操作 Commit的操作然后Pull（更新）Push（提交git合并）]]></content>
+    <content type="text"><![CDATA[摘要: mac_eclipse调制代码方式 调制代码时，常用到的方式shift + command + T -&gt; Open Type control + H -&gt; Search (File Search、Java Search …) command + O -&gt; 查看该class中的方法和成员变量 command + e -&gt; 快速转换编辑器 option + command + 上下 -&gt; 将高亮显示处往上或下复制 command + m -&gt; 窗口最大化切换 command + / -&gt; 自动注释掉选择的代码块 command + shift + / -&gt; 自动注释掉选择的代码块 command + shift + X 和 command + shift + Y -&gt; 英文字母大小写的转换 command +shift + O -&gt; 自动引入包和删除无用包 debug模式情况下：想立刻执行一条语句刚写的语句，此时断点正在附近: command + U 左边的是将所有包缩小 右边勾选 会自动跟从你所浏览的代码所在的包的位置 Projects Presentation(项目介绍)展示方式： Flat（平坦式 一大串）； Hierarchical（分等级式 像ztree的感觉） Variables 可以在debug时看到对应的变量的情况BreakPoints 可以在这里看到你打得断点的信息（位置，数量，也可以对端点进行操作）Expressions 在端点执行过程中 执行想要的方法 对Tomcat进行部分操作修改Servers中某个Tomcat的config(后台代码修改不会导致Tomcat重启) server.xml： 修改最后几行的 Context标签中 reloadable=”false” debug=”0” 现在有个很好用的插件不需要上面的配置就可以实现 后台代码修改即可以使用，不需要重启Tomcat。JRebel 支持 eclipse、Intelli IDEA、android studio 对Git进行操作 Commit的操作然后Pull（更新）Push（提交git合并） 对Maven包依赖查看]]></content>
       <categories>
         <category>mac_eclipse调制代码方式</category>
       </categories>
@@ -78,17 +78,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[github命令]]></title>
-    <url>%2F2017%2F08%2F28%2Fgithub%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[摘要: github命令 github使用的基本步骤 mac环境1、 创建一个Test文件夹，然后进去到此文件夹中(初始化git仓库) 1git init 2、 git clone 命令将存储库克隆到新目录中 12git clone http://bogon/huangdonghua/mytest.git输入对应的账号密码 3、 查看状态 1git status 4、 把 myTest/test.txt 文件添加到本地Git仓库，将myTest一并add 1git add myTest/ 5、 可以选择设置下自己的用户名与邮箱 12git config —global user.name &quot;huangdonghua&quot; git config —global user.email &quot;591327356@qq.com&quot; 6、 正式提交 1git commit -m ‘myTest’ 7、 查看所有产生的 commit 记录 1git log 8、 把本地 Test 项目与 GitLab 上的 myTest 项目进行关联（切换到Test 目录） 123git remote add origin http://bogon/huangdonghua/mytest.gitgit remote -v //查看我们当前项目有哪些远程仓库 9、 向远程仓库进行代码提交 (需要事先配置好公钥和密钥 id_rsa.pub 和 id_rsa) 1git push origin master 出现过的错误: 123456789$ git push origin master To http://bogon/huangdonghua/mytest.git ! [rejected] master -&gt; master (fetch Mytest) error: failed to push some refs to &apos;http://bogon/huangdonghua/mytest.git&apos; hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., &apos;git pull ...&apos;) before pushing again. hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details. 理解： 远程仓库已经更新了，本地仓库还未更新，在 push 之前需要做 pull 用来更新本地仓库（保证一致，才可以进行合并) 1git pull origin master 这时候又有可能遇到的问题： 1234$ git pull origin master From http://bogon/huangdonghua/mytest.git * branch master -&gt; FETCH_HEAD fatal: refusing to merge unrelated histories 解决方案：1git pull origin master --allow-unrelated-histories 成功后，就可以执行 push 操作了 在mac下 SSH Key设置： 1234567$ cd ~/.ssh/$ ls如果看到 id_rsa id_rsa.pub 这2个文件就说明已经有了SSH Key；这时候只要 vim id_rsa.pub 赋值就可以了如果没有： ssh-keygen -t rsa 选择默认和输入密码就可以省下就和上面一样了 其余git命令123456789101112131415161718git branch aaa 新建分枝aaa git branch 查看分枝 git checkout aaa 切换到分枝aaa git checkout -b aaa 新建并切换到aaa git merge aaa 把aaa分支的代码合并过来(当前所在分枝，比如master) git branch -d aaa 删除分枝aaa git branch -D aaa 强制删除aaa git tag v1.0 加版本号 git tag 查看版本号 git checkout v1.0 切换到版本v1.0//恢复某个文件的修改，若存在暂存区域的话，就恢复到暂存区域的状态，//若不存在暂存区域的话，就恢复到本地库的状态。git checkout 文件名//下面的.是表示所有文件git checkout .//若存在暂存区域，就是工作区与暂存区域的具体差异，若不存在暂存区域，则是工作区与本地库的具体差异。git diff 懒人避免冲突的方式：先将本地修改存储起来 1$ git stash 这样本地的所有修改就都被暂时存储起来 123$ git stash listgit stash暂存修改其中stash@&#123;0&#125;就是刚才保存的标记。 暂存了本地修改之后，就可以pull了 1$ git pull 还原暂存的内容 1$ git stash pop stash@&#123;0&#125; 详细懒人方式]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Jetbrains软件(WS、IJ)]]></title>
     <url>%2F2017%2F08%2F28%2F%E7%A0%B4%E8%A7%A3Jetbrains%E8%BD%AF%E4%BB%B6%2F</url>
     <content type="text"><![CDATA[摘要: 破解Jetbrains软件 Ubuntu下面 PHPSTORM2017.2破解方法 在 http://idea.lanyus.com/上面新下载一个破解文件。 破解步骤 将JetbrainsCrack-2.6.3_proc.jar放到phpstorm安装目录的lib文件夹下面 进入到phpstorm安装目录的bin目录下面。找到phpstorm64.vmoptions文件，然后打开，在最后面一行输入-javaagent:/opt/phpstorm2017/lib/JetbrainsCrack-2.6.3_proc.jar保存文件。 打开http://idea.lanyus.com/getkey?userName=username username可以随便更改成你想要的，然后生成一个激活码， 再打开phpstorm，选择Activation Code选项，将生成的激活码复制进去，然后激活。 完结 重启phpstorm，然后就可以开始coding之路了。]]></content>
@@ -97,6 +86,17 @@
       </categories>
       <tags>
         <tag>Jetbrains</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github命令]]></title>
+    <url>%2F2017%2F08%2F28%2Fgithub%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[摘要: github命令 github使用的基本步骤 mac环境1、 创建一个Test文件夹，然后进去到此文件夹中(初始化git仓库) 1git init 2、 git clone 命令将存储库克隆到新目录中 12git clone http://bogon/huangdonghua/mytest.git输入对应的账号密码 3、 查看状态 1git status 4、 把 myTest/test.txt 文件添加到本地Git仓库，将myTest一并add 1git add myTest/ 5、 可以选择设置下自己的用户名与邮箱 12git config —global user.name &quot;huangdonghua&quot; git config —global user.email &quot;591327356@qq.com&quot; 6、 正式提交 1git commit -m ‘myTest’ 7、 查看所有产生的 commit 记录 1git log 8、 把本地 Test 项目与 GitLab 上的 myTest 项目进行关联（切换到Test 目录） 123git remote add origin http://bogon/huangdonghua/mytest.gitgit remote -v //查看我们当前项目有哪些远程仓库 9、 向远程仓库进行代码提交 (需要事先配置好公钥和密钥 id_rsa.pub 和 id_rsa) 1git push origin master 出现过的错误: 123456789$ git push origin master To http://bogon/huangdonghua/mytest.git ! [rejected] master -&gt; master (fetch Mytest) error: failed to push some refs to &apos;http://bogon/huangdonghua/mytest.git&apos; hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., &apos;git pull ...&apos;) before pushing again. hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details. 理解： 远程仓库已经更新了，本地仓库还未更新，在 push 之前需要做 pull 用来更新本地仓库（保证一致，才可以进行合并) 1git pull origin master 这时候又有可能遇到的问题： 1234$ git pull origin master From http://bogon/huangdonghua/mytest.git * branch master -&gt; FETCH_HEAD fatal: refusing to merge unrelated histories 解决方案：1git pull origin master --allow-unrelated-histories 成功后，就可以执行 push 操作了 在mac下 SSH Key设置： 1234567$ cd ~/.ssh/$ ls如果看到 id_rsa id_rsa.pub 这2个文件就说明已经有了SSH Key；这时候只要 vim id_rsa.pub 赋值就可以了如果没有： ssh-keygen -t rsa 选择默认和输入密码就可以省下就和上面一样了 其余git命令123456789101112131415161718git branch aaa 新建分枝aaa git branch 查看分枝 git checkout aaa 切换到分枝aaa git checkout -b aaa 新建并切换到aaa git merge aaa 把aaa分支的代码合并过来(当前所在分枝，比如master) git branch -d aaa 删除分枝aaa git branch -D aaa 强制删除aaa git tag v1.0 加版本号 git tag 查看版本号 git checkout v1.0 切换到版本v1.0//恢复某个文件的修改，若存在暂存区域的话，就恢复到暂存区域的状态，//若不存在暂存区域的话，就恢复到本地库的状态。git checkout 文件名//下面的.是表示所有文件git checkout .//若存在暂存区域，就是工作区与暂存区域的具体差异，若不存在暂存区域，则是工作区与本地库的具体差异。git diff 懒人避免冲突的方式：先将本地修改存储起来 1$ git stash 这样本地的所有修改就都被暂时存储起来 123$ git stash listgit stash暂存修改其中stash@&#123;0&#125;就是刚才保存的标记。 暂存了本地修改之后，就可以pull了 1$ git pull 还原暂存的内容 1$ git stash pop stash@&#123;0&#125; 详细懒人方式]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
