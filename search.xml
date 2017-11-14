@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[web中间件]]></title>
+    <url>%2F2017%2F11%2F29%2Fweb%E4%B8%AD%E9%97%B4%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[摘要: web中间件 前言一般本地开发的话建议使用tomcat。linux系统建议使用jetty或apache hpptd大型的项目就用JBOSS或webloigc小项目，或者是个人开发tomcat 大项目或者商业项目一般采用：weblgoic/webshere其他的还有jboss、glasshfish等一些示例项目或者小项目常采用jettytomcat , jboss, weblogic, websphere 一般项目tomcat就可以了Tomcat是Sun的JSWDK(JavaServer Web Development Kit)中Servlet的运行环境(servlet容器)。Tomcat是Apache Jakarta软件组织的一个子项目，Tomcat是一个JSP/Servlet容器，它是在SUN公司的JSWDK（Java Server Web Development Kit）基础上发展起来的一个JSP和Servlet规范的标准实现，使用Tomcat可以体验JSP和Servlet的最新规范。经过多年的发展，Tomcat不仅是JSP和Servlet规范的标准实现，而且具备了很多商业Java Servlet容器的特性，并被一些企业用于商业用途。JBoss是一个运行EJB的J2EE应用服务器。它是开放源代码的项目，遵循最新的J2EE规范。从JBoss项目开始至今，它已经从一个EJB容器发展成为一个基于的J2EE的一个web 操作系统（operating system for web），它体现了J2EE规范中最新的技术WebLogic服务器是企业级的应用服务器，支持EJB, 集群以及 ERP（企业资源计划）的连通性 ，开发公司：BEA。WebSphere产品系列是IBM公司一套典型的电子商务应用开发工具及运行环境 tomcatweblogic]]></content>
+      <categories>
+        <category>web中间件</category>
+      </categories>
+      <tags>
+        <tag>web中间件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ztree进阶学习记录]]></title>
+    <url>%2F2017%2F11%2F03%2Fztree%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[摘要: ztree进阶学习记录 ztree异步加载 由于ztree的数据量增大，通过直接将所有的ztree的节点都全部加载的方式，就会变得越来越慢的，所以为了解决这个问题。 解决的方案： 每次点击parent节点时才去加载此下的子节点挂于此节点下，点击树节点，table/grid回显示对应的数据，同时得注意： 此parent节点下异步加载的子节点需要判断是否是父节点，否则无法显示是否parent也就是无打开节点的按钮。 由于需要判断是否是父节点，所以需要后台传递值给前端带有isParent(true|false)。 如果没有isParent这个字段也会影响，zTreeObj.addNodes这个方法无法有效果。 同时为了实现增删改节点时，保持原本节点打开状态，而不是重新加载并且完全闭合。 12345678910111213141516171819202122在ztree处开启 isAsync=&quot;true&quot; 开启异步加载&lt;Tree id=&quot;functiontree&quot; layoutHeight=&quot;0&quot; width=&quot;100%&quot; hasRoot=&quot;true&quot; idField=&quot;treeId&quot; rootId=&quot;&quot; isAsync=&quot;true&quot;parentField=&quot;treeParentId&quot; nameField=&quot;treeText&quot; rootName=&quot;应用功能列表&quot; hasQry=&quot;true&quot; fit=&quot;true&quot;searchUrl=&quot;platform/appframe/function/afaappfunction/getAppFunctionTreeByName.do&quot; loadUrl=&quot;platform/appframe/function/afaappfunction/getAppFunctionTree.do&quot;/&gt;//设置树异步加载参数$A(&quot;#functiontree&quot;).setting.async.otherParam = &#123;&quot;isDisableType&quot;:&quot;NO&quot;&#125;; //设置异步加载时自动提交父节点属性的参数$A(&quot;#functiontree&quot;).setting.async.autoParam = [&quot;treeId&quot;]; 对应ztreeAPI： var setting = &#123; ..., async : &#123; autoParam:[], otherParam:[], url:&quot;&quot;, type:&quot;&quot;, dataType:&quot;text&quot; &#125; &#125; update前端提交修改保存完controller后，返回成功的信息，ajax的callback方法中对ztree中修改的节点信息修改 12345678910111213141516171819202122$a.messager.correct(&quot;操作成功&quot;);//当前选中的节点var currentObj = _self.copyObject;//获取ztree所有的节点var nodes = $A(&apos;#functiontree&apos;).getNodes();//获取提交表单的所有数据var data = $A(&quot;#afaappfunctionPage_forms_show&quot;).getSumbitData(); if (nodes.length&gt;0) &#123; currentObj.treeData.funcName = data.data.funcName; currentObj.treeText = currentObj.treeId+&quot; &quot;+currentObj.treeData.funcName; currentObj.treeData.funcType = data.data.funcType; currentObj.treeData.funcUrl = data.data.funcUrl; currentObj.treeData.isMenu = data.data.isMenu; currentObj.treeData.isAuthorize = data.data.isAuthorize; currentObj.treeData.isDisable = data.data.isDisable; currentObj.treeData.funcDesc = data.data.funcDesc; //将对应的ztree的节点进行更新 $A(&apos;#functiontree&apos;).updateNode(currentObj);&#125;``` add前端提交新增保存完controller后，返回对应的新增的节点(json)，ajax的callback方法中对前端的ztree新增显示节点 123456789101112131415161718192021222324252627var flag=false;//获取ztree选中的节点var selectedNode = AfaAppFunctionDlg.getInstance().treeObj.getSelectedNodes()[0];var selectedTreeCode = selectedNode.treeId;// 如果treeId 为空情况下使用treeData.appId 进行获取treeId进行识别if(selectedTreeCode==&quot;&quot;||selectedTreeCode==undefined||selectedTreeCode==null)&#123; selectedTreeCode = selectedNode.treeData.appId; flag=true;&#125;$A(&apos;#afaappfunctionPage_form&apos;).sumbitAllComp(&#123;...//获取ztree所有的节点var treeObj = AfaAppFunctionDlg.getInstance().treeObj;var parentNode = null;if(flag)&#123; //获取节点中有treeId为‘selectedTreeCode’的节点 parentNode = treeObj.getNodeByParam(&quot;treeId&quot;, selectedTreeCode, null);&#125;else&#123; //获取节点中有treeId为‘selectedTreeCode’的节点 parentNode = treeObj.getNodeByParam(&quot;treeId&quot;, selectedTreeCode, null);&#125;parentNode.isLeaf= &quot;0&quot;;parentNode.isParent=true;treeObj.updateNode(parentNode);treeObj.addNodes(parentNode, json); $a.messager.correct(&quot;操作成功&quot;); delete前端提交批量删除保存完controller后，返回操作成功提示，ajax的callback方法中对前端的ztree进行批量删除 1234567891011121314151617181920var treeObj = $A(&quot;#lefttree&quot;);var treeNode = treeObj.getSelectedNodes()[0];var parentNode = treeNode.getParentNode();//rowList 删除节点的数组 for(var attr in rowList)&#123; var menuId = rowList[attr][&quot;menuId&quot;] //获取存在 node.menu和node.treeData.menuId是&apos;menuId&apos;的树节点 var node = treeObj.getNodesByFilter(function(node)&#123;return (node.menu &amp;&amp; node.treeData.menuId == menuId)&#125;,true); //将该节点从树中移除 treeObj.removeNode(node);&#125; treeNode = treeObj.getSelectedNodes()[0]; if(treeNode)&#123; //需要对修改的树节点的父节点进行判断是否存在子节点 treeNode.isParent = treeNode.children.length == 0?false:true; treeObj.updateNode(treeNode);&#125;parentNode.isParent = parentNode.children.length == 0?false:true;treeObj.updateNode(parentNode); move树节点进行移动. 123456前端需要使用的到的代码//被移开的节点treeObj.removeNode(node);//被移动到的节点treeObj.updateNode(parentNode);treeObj.addNodes(parentNode, json);]]></content>
+      <categories>
+        <category>ztree</category>
+      </categories>
+      <tags>
+        <tag>ztree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Dynamic Web Module Cannot Transform]]></title>
+    <url>%2F2017%2F11%2F02%2FDynamic%20Web%20Module%20Cannot%20Transform%2F</url>
+    <content type="text"><![CDATA[摘要: Dynamic Web Module Cannot Transform 解决方案 web项目出现Dynamic Web Module 无法从2.3转化为2.5的版本。 解决方案： 首先出现问题的原因在于你的==web.xml==： 1234 &lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee&quot;xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt; 项目还是2.3的，而使用的version=2.5的，项目会报错（大致的意思就是无法转化），可以通过在本地项目中.setting文件中进行手动改变为2.5。（mac正常情况下是查看到.setting文件 可以通过 **shift+command+.**）]]></content>
+      <categories>
+        <category>Dynamic Web Module</category>
+      </categories>
+      <tags>
+        <tag>Dynamic Web Module</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven常用命令]]></title>
+    <url>%2F2017%2F11%2F02%2Fmaven%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[摘要: maven常用命令 maven常用命令maven install 将项目根据pom.xml（packaging）的类型进行打包，同时清除项目中target之前打包。 场景1： web项目需要引用parent的项目[存在私服中]，欲将web项目应用引用 本地parent的项目[需要从私服下载到本地,然后执行下面的命令]。 把parent项目中所有的引用项目进行打包，便于本地进行修改测试 场景2： 引用的项目来自gitlab上，gitlab所引用的项目已经在gitlab上已经更新的，但是在maven repository中的还未改变。 解决方案：可以通过将gitlab上的项目下载下来，然后进行install 生成新的jar包或者其他的包。 12345其中用到的操作：git initgit clone gitLab地址cd 对应的项目（项目的上下文）中mvn clean install 生成最新的jar包或其他包 123456//相当于 maven clean install//不想用mvn clean又想保证jar包最新mvn install -Djar.forceCreationmaven clean install//maven的debugg信息非常完备，需要查看debug信息只要在命令后面添加 -X 参数即可mvn clean install -X maven package 将项目快速进行打包pom.xml（packaging）的类型进行打包,同时清除项目中target之前打包。 场景：将parent中的某个模块修改代码完，打包发给他人临时(为了临时测试使用) 12mvn clean packagemvn package -Djar.forceCreation //上面maven install提到过 mvn dependency:tree 使用mvn查看项目jar之间的依赖关系 123cd appframe mvn dependency:tree --&gt; tree.txttree.txt 文件在当前目录下 显示]]></content>
+      <categories>
+        <category>maven</category>
+      </categories>
+      <tags>
+        <tag>maven常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[BS任务调度学习记录]]></title>
+    <url>%2F2017%2F11%2F02%2FBS%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[摘要: BS任务调度quartz学习记录]]></content>
+      <categories>
+        <category>quartz</category>
+      </categories>
+      <tags>
+        <tag>任务调度quartz</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux常用命令]]></title>
+    <url>%2F2017%2F10%2F29%2FLinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[摘要: Linux常用命令]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[shiro学习记录]]></title>
+    <url>%2F2017%2F10%2F29%2Fshiro%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%2F</url>
+    <content type="text"><![CDATA[摘要: ssm+shiro+ehcache 遇到的问题问题一(NoClassDefFoundError) caused by: java.lang.NoClassDefFoundError: org/aspectj/weaver/reflect/ReflectionWorld$ReflectionWorldException 解决方案 缺少aspectjweaver.jar 12345&lt;dependency&gt; &lt;groupId&gt;org.aspectj&lt;/groupId&gt; &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt; &lt;version&gt;1.7.1&lt;/version&gt;&lt;/dependency&gt; 问题二(java包下无法更新编译.xml文件) IDEA src下的目录除了==.java==其他文件无法==更新编译加载== 解决方案 在pom.xml文件中配置 12345678910111213141516171819202122232425262728293031323334&lt;build&gt; &lt;finalName&gt;demo&lt;/finalName&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt; &lt;configuration&gt; &lt;source&gt;1.6&lt;/source&gt; &lt;target&gt;1.6&lt;/target&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;resources&gt; &lt;resource&gt; &lt;directory&gt;src/main/resources&lt;/directory&gt; &lt;!-- resources 编译执行包含以下类型文件 --&gt; &lt;includes&gt; &lt;include&gt;**/*.properties&lt;/include&gt; &lt;include&gt;**/*.xml&lt;/include&gt; &lt;include&gt;**/*.ini&lt;/include&gt; &lt;/includes&gt; &lt;filtering&gt;false&lt;/filtering&gt; &lt;/resource&gt; &lt;resource&gt; &lt;directory&gt;src/main/java&lt;/directory&gt; &lt;!-- java 编译执行包含以下类型文件 --&gt; &lt;includes&gt; &lt;include&gt;**/*.properties&lt;/include&gt; &lt;include&gt;**/*.xml&lt;/include&gt; &lt;/includes&gt; &lt;filtering&gt;false&lt;/filtering&gt; &lt;/resource&gt; &lt;/resources&gt; &lt;/build&gt; 问题三(shiro一直处于登录页面,无法跳转到succeeURL) shiro一直处于登录页面,无法跳转到succeeURL,错误情况下可以进入到FormAuthenticationFilter 该文件中，但是正确情况下就无法进入，controller也接受不到错误信息。 提交Form表单给 (“/login”) methond必须是==POST== 不可以使用==GET==，否则就会出现上面的情况,可以查看下源码看到该情况。 shiro使用到 WebUtils 工具保存session]]></content>
+      <categories>
+        <category>shiro</category>
+      </categories>
+      <tags>
+        <tag>shiro学习记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[WebService到今天流行的RESTful API(JSON) over HTTP]]></title>
+    <url>%2F2017%2F10%2F29%2FWebService%E5%88%B0RESTful%20API(JSON)%20over%20HTTP%2F</url>
+    <content type="text"><![CDATA[摘要: WebService到今天流行的RESTful API(JSON) over HTTP WebService有很多协议，为什么HTTP比较流行？WebService是个很重型的规范，它的应用协议是SOAP（简单对象访问协议），它所依赖的下层通信方式不单单是HTTP，也有SOAP over SMTP, SOAP over TCP，由于HTTP协议群众基础广，开发调试方便，所以，成了WebService中最为流行的方式。 甚至很多公司在内网通信，也用HTTP来做，比如，应用调用搜索引擎，Solr就是一个例子。 但HTTP也是TCP上性能比较差的协议，因为HTTP是基于TCP的，有3次握手，再加上HTTP是个文本传输协议（虽然也可以传二进制的附件，但业务逻辑还是文本用的多），又有很多复杂的HEADER。所以人们发明了一些更高效的通信协议来做远程调用，比如ACE、ICE、Corba、淘宝的HSF，但这是后话了，不展开细说。你只要知道，HTTP之所以流行，乃是简单易用群众基础广的结果。 WebService为什么不如RESTful API流行WebService诞生十几年了，最初是IBM、微软比较热心在推，一直也不温不火。倒是XML-RPC, RESTful以及比RESTful还要简陋的远程调用方式后来居上。感觉是不是有点像民间的Spring干掉官方的EJB？ 究其原因，还是WebService实在太笨重了，SOAP信封犹如婆娘的裹脚布，又臭又长，广大开发人员是叔可忍嫂不能忍，于是就有了简化版的，叫XML-RPC，后来伴随着Web2.0流行，RESTful独领风骚。我在10年前做过一个产品，纯PHP+JS，标准的WebService，连WSDL我都要专门写个PHP程序来生成，还好只是我一个人开发，要是团队协作，我早就被骂得不成人形了。 再后来，连RESTful都被嫌弃了，大伙儿干脆连PUT、DELETE都懒得用，直接用GET和POST。 同时，我得说，这只是在互联网领域，大部分企业的业务逻辑相对简单，同时工期又变态的短（就像大部分互联网创业公司用糙快猛的PHP，而不用相对严谨的Java一样）。在某些业务复杂，稳定性和正确性要求高的领域（如ERP、电商、支付），WebService还有是用武之地的。 为什么JSON比XML流行还是易用性，JSON的可读性比XML强几条长安街，解析规则也简单许多。XML解析的时候规则太多了，动不动就非法字符，动不动就抛异常。这对追求高开发速度和低开发门槛的企业来说，是个致命伤。 JSON的缺点是数据类型支持较少，且不精确。比方说： 1price:12580 在json里，你无法知道这个价格是int, float还是double。 所以，如上面第二条所述，在一些业务要求较高的领域，还是XML更合适。 最后说一下性能，JSON的性能高于XML，除此之外，基于XML和HTTP的WebService, 基于JSON的RESTful API，并没有性能差异。 XML性能糟糕到什么地步呢，有一种专门的CPU叫做XML Accelerator，专门为XML解析提供硬件加速。]]></content>
+      <categories>
+        <category>WebService与RESTful</category>
+      </categories>
+      <tags>
+        <tag>WebService与RESTful</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Javascript开发学习记录]]></title>
     <url>%2F2017%2F10%2F14%2FJavascript%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[摘要: Javascript开发学习记录 找个时间整理]]></content>
@@ -23,17 +111,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[mac_eclipse调制代码方式]]></title>
-    <url>%2F2017%2F09%2F20%2Feclipse%E8%B0%83%E5%88%B6%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%2F</url>
-    <content type="text"><![CDATA[摘要: mac_eclipse调制代码方式 调制代码时，常用到的方式shift + command + T -&gt; Open Type control + H -&gt; Search (File Search、Java Search …) command + O -&gt; 查看该class中的方法和成员变量 command + e -&gt; 快速转换编辑器 option + command + 上下 -&gt; 将高亮显示处往上或下复制 command + m -&gt; 窗口最大化切换 command + / -&gt; 自动注释掉选择的代码块 command + shift + / -&gt; 自动注释掉选择的代码块 command + shift + X 和 command + shift + Y -&gt; 英文字母大小写的转换 command +shift + O -&gt; 自动引入包和删除无用包 command +option + 左右 -&gt; 回到上次光标的位置 debug模式情况下：想立刻执行一条语句刚写的语句，此时断点正在附近: command + U 左边的是将所有包缩小 右边勾选 会自动跟从你所浏览的代码所在的包的位置 Projects Presentation(项目介绍)展示方式： Flat（平坦式 一大串）； Hierarchical（分等级式 像ztree的感觉） Variables 可以在debug时看到对应的变量的情况BreakPoints 可以在这里看到你打得断点的信息（位置，数量，也可以对端点进行操作）Expressions 在端点执行过程中 执行想要的方法 对Tomcat进行部分操作修改Servers中某个Tomcat的config(后台代码修改不会导致Tomcat重启) server.xml： 修改最后几行的 Context标签中 reloadable=”false” debug=”0” 现在有个很好用的插件不需要上面的配置就可以实现 后台代码修改即可以使用，不需要重启Tomcat。JRebel 支持 eclipse、Intelli IDEA、android studio 对Git进行操作 Commit的操作然后Pull（更新）Push（提交git合并） 对Maven包依赖查看]]></content>
-      <categories>
-        <category>mac_eclipse调制代码方式</category>
-      </categories>
-      <tags>
-        <tag>mac_eclipse调制代码方式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[进入BS部门第一天]]></title>
     <url>%2F2017%2F09%2F20%2F%E9%83%A8%E9%97%A8%E7%AC%AC%E4%B8%80%E5%A4%A9%2F</url>
     <content type="text"><![CDATA[摘要: 遇到问题及解决 遇到问题及解决 web项目出现Dynamic Web Module 无法从2.3转化为2.5的版本。 解决方案：首先出现问题的原因在于你的web.xml： 1234&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee&quot;xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt; 项目还是2.3的，而使用的version=2.5的，项目会报错（大致的意思就是无法转化），可以通过在本地项目中.setting文件中进行手动改变为2.5。 引用的项目来自gitlab上，gitlab所引用的项目已经在gitlab上已经更新的，但是在maven repository中的还未改变。 解决方案：可以通过将gitlab上的项目下载下来，然后进行install 生成新的jar包或者其他的包 其中用到的操作： git init git clone gitLab地址 cd 对应的项目中 mvn clean install 生成最新的jar包或其他包 将项目也导入进eclipse中，原本引用该gitlab上的项目优先在本地上进行搜索并且加载，如果没有在从远程repository中下载对应的包。]]></content>
@@ -45,6 +122,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[mac_eclipse调制代码方式]]></title>
+    <url>%2F2017%2F09%2F20%2Feclipse%E8%B0%83%E5%88%B6%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[摘要: mac_eclipse调制代码方式 调制代码时，常用到的方式shift + command + T -&gt; Open Type control + H -&gt; Search (File Search、Java Search …) command + O -&gt; 查看该class中的方法和成员变量 command + e -&gt; 快速转换编辑器 option + command + 上下 -&gt; 将高亮显示处往上或下复制 command + m -&gt; 窗口最大化切换 command + / -&gt; 自动注释掉选择的代码块 command + shift + / -&gt; 自动注释掉选择的代码块 command + shift + X 和 command + shift + Y -&gt; 英文字母大小写的转换 command +shift + O -&gt; 自动引入包和删除无用包 command +option + 左右 -&gt; 回到上次光标的位置 debug模式情况下：想立刻执行一条语句刚写的语句，此时断点正在附近: command + U 左边的是将所有包缩小 右边勾选 会自动跟从你所浏览的代码所在的包的位置 Projects Presentation(项目介绍)展示方式： Flat（平坦式 一大串）； Hierarchical（分等级式 像ztree的感觉） Variables 可以在debug时看到对应的变量的情况BreakPoints 可以在这里看到你打得断点的信息（位置，数量，也可以对端点进行操作）Expressions 在端点执行过程中 执行想要的方法 对Tomcat进行部分操作修改Servers中某个Tomcat的config(后台代码修改不会导致Tomcat重启) server.xml： 修改最后几行的 Context标签中 reloadable=”false” debug=”0” 现在有个很好用的插件不需要上面的配置就可以实现 后台代码修改即可以使用，不需要重启Tomcat。JRebel 支持 eclipse、Intelli IDEA、android studio 对Git进行操作 Commit的操作然后Pull（更新）Push（提交git合并） 对Maven包依赖查看]]></content>
+      <categories>
+        <category>mac_eclipse调制代码方式</category>
+      </categories>
+      <tags>
+        <tag>mac_eclipse调制代码方式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小组项目学习记录]]></title>
     <url>%2F2017%2F09%2F12%2FBS%E5%B0%8F%E7%BB%84%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[摘要: BS小组项目学习记录 前端部分（XML、JS）前端使用到公司的框架： xml标签：Page、items、Panel、Tree、XGrid…JS使用到的是requireJS： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556//define([&apos;引入外部js模块或控件&apos;],function(&apos;引入外部js或控件的别名&apos;)&#123;&#125;)define([&quot;app/widgets/window/app-dialog&quot;,&quot;目录&quot;,&quot;目录&quot;],function(Dialog,PageBase,dlg)&#123; var xxxModel = PageBase.extend(&#123; //类初始化 initialize : function()&#123; xxxModel.superclass.initialize.call(this); &#125;, //控件监听事件 格式：#控件id#:&#123;事件名:事件方法&#125; listeners:&#123; &#125;, //页面初始化 initPage:function()&#123; &#125;, //显示查看业 showViewPage:function(data,e)&#123; var _self=this; dlg.showPage(dlg.ACTION.VIEW,data,function()&#123; _self.refreshData(); &#125;); &#125;, refreshData:function()&#123; $(&quot;#receiptMaintenancePage_grid&quot;).grid(&quot;reload&quot;); &#125;, //显示编辑业 showEditPage:function(data,e)&#123; var _self=this; dlg.showPage(dlg.ACTION.EDIT,data,function()&#123; //_self.refreshData(); $(&quot;#receiptMaintenancePage_grid&quot;).grid(&quot;reload&quot;); &#125;); &#125;, //控件属性重置 initUIExtConfig : function() &#123; var _self=this; this.uiExtConfig=&#123; //格式 #控件id#:function(控件属性集类)&#123; config.setAttr(&quot;控件属性名&quot;,&quot;属性值&quot;),// 网格，下拉网格，特殊设置config.getColumn(&quot;网列id&quot;).setAttr(&quot;列属性名&quot;,&quot;列属性值&quot;)config.getButton(&quot;网格内包含的按钮id&quot;).setAttr(&quot;handler&quot;,&quot;点击事件&quot;) &#125; receiptMaintenancePage_grid:function(config)&#123; config.getButton(&quot;receiptMaintenancePage_grid_btnEdit&quot;).setAttr(&quot;handler&quot;,_self.showEditPage); config.getButton(&quot;receiptMaintenancePage_grid_btnView&quot;).setAttr(&quot;handler&quot;,_self.showViewPage); config.getButton(&quot;receiptMaintenancePage_grid_btnDel&quot;).setAttr(&quot;handler&quot;,_self.doDeleteData); &#125; &#125; &#125; &#125;); xxxModel.getInstance=function()&#123; if (!this.instance)&#123; this.instance =new xxxModel(); &#125; return this.instance; &#125; return xxxModel.getInstance();&#125;); XML经常使用到的方式1.树 123456&lt;Tree id=&quot;receiptLeftTree&quot; layoutHeight=&quot;0&quot; width=&quot;100%&quot; hasRoot=&quot;true&quot; rootId=&quot;&quot; rootName=&quot;机构列表&quot; idField=&quot;treeId&quot; isAsync=&quot;true&quot; nameField=&quot;treeText&quot; parentField=&quot;treeParentId&quot; hasQry=&quot;true&quot; searchUrl=&quot;platform/appframe/afauser/searcherAfaUserTree.do&quot; searchFields=&quot;orgName&quot; loadUrl=&quot;platform/appframe/afauser/queryAfaUserTree.do&quot;&gt;&lt;/Tree&gt; 2.查询功能 12345678910111213141516171819&lt;Query id=&quot;receiptMaintenancePage_query&quot; queryTarget=&quot;receiptMaintenancePage_grid&quot; isAdvance=&quot;true&quot; style=&quot;display:none;&quot; manual=&quot;false&quot; advColCount=&quot;2&quot;&gt; &lt;quicks&gt; &lt;QueryItem id=&quot;ticketedPointCode&quot; name=&quot;开票点&quot; tips=&quot;输入开票点编码查询&quot; field=&quot;TICKETED_POINT_CODE&quot; operator=&quot;like&quot; editorType=&quot;TEXTBOX&quot; /&gt; &lt;QueryItem id=&quot;startTime&quot; name=&quot;编制日期&quot; field=&quot;CREATE_TIME&quot; tips=&quot;输入编制日期查询&quot; operator=&quot;&gt;=&quot; editorType=&quot;DATETIME&quot; /&gt; &lt;QueryItem id=&quot;endTime&quot; name=&quot;至&quot; field=&quot;CREATE_TIME&quot; tips=&quot;输入编制日期查询&quot; operator=&quot;&amp;lt;=&quot; editorType=&quot;DATETIME&quot; /&gt; &lt;QueryItem id=&quot;gaoji&quot; name=&quot;高级&quot; value=&quot;1&quot; visible=&quot;false&quot; operator=&quot;=&quot; editorType=&quot;TEXTBOX&quot; /&gt; &lt;/quicks&gt; //高级查询 &lt;advances&gt; &lt;QueryItem id=&quot;ticketedPointCode&quot; name=&quot;开票点编码&quot; editorType=&quot;TEXTBOX&quot; /&gt; &lt;QueryItem id=&quot;createTime&quot; name=&quot;创建日期&quot; editorType=&quot;DATETIME&quot; /&gt; &lt;/advances&gt;&lt;/Query&gt; 3.标签页 123456789101112131415161718192021&lt;Panel id=&quot;id必填&quot; region=&quot;定义布局面板的位置&quot;&gt; &lt;items&gt; &lt;Tabs id=&quot;receiptMaintenance_panel_right_bottom_tabs&quot;&gt; &lt;items&gt; &lt;TabPanel id=&quot;panel_south_tabs_projects_info&quot; name=&quot;项目&quot; layout=&quot;border&quot; style=&quot;height: 240px;&quot;&gt; &lt;items&gt; 内容可以是 XGrid或者Form &lt;/items&gt; &lt;/TabPanel&gt; &lt;TabPanel id=&quot;panel_south_tabs_user_info&quot; name=&quot;项目&quot; layout=&quot;border&quot; style=&quot;height: 240px;&quot;&gt; &lt;items&gt; 内容可以是 XGrid或者Form &lt;/items&gt; &lt;/TabPanel&gt; &lt;/items&gt; &lt;/Tabs&gt; &lt;/items&gt;&lt;/Panel&gt; 4.XGridColumn实现下拉并且将row自动填写( XML 和 JS(在listeners中) ) 4.1 XML: 12345678&lt;XGridColumn field=&quot;projectStandard&quot; title=&quot;项目标准&quot; editorType=&quot;COMBOBOX&quot; align=&quot;center&quot; editorOptions=&quot;&#123; textfield: &apos;projectStandard&apos;, valuefield: &apos;projectCode&apos;, url: &apos;platform/appframe/receipt/maintenance/receiptmaintenance/queryProjectList.do&apos; &#125;&quot; /&gt; 4.2 JS: 12345678910111213141516171819projects_grid_editable : &#123; onClickCell : function(rowData, rowIndex, field) &#123; var self = ReceiptMaintenanceDlg.getInstance(); if(field == &quot;projectStandard&quot;)&#123; var edProjectStandard = $(&apos;#projects_grid_editable&apos;).grid(&apos;getEditor&apos;, field); var edProjectCode = $(&apos;#projects_grid_editable&apos;).grid(&apos;getEditor&apos;, &quot;projectCode&quot;); $(edProjectStandard).combobox(&apos;reload&apos;,&apos;platform/appframe/receipt/maintenance/receiptmaintenance/queryProjectList.do?whichData=project&apos;); $(edProjectStandard).bind(&apos;change&apos;,function()&#123; var projectId = $(edProjectStandard).combobox(&quot;getValue&quot;); var projectStandard= $(edProjectStandard).combobox(&quot;getText&quot;); var rowIndex = $(&apos;#projects_grid_editable&apos;).grid(&apos;getCurrentEditRowIndex&apos;); var rowData = $(&apos;#projects_grid_editable&apos;).grid(&apos;getCurrentEditRowData&apos;); $(&apos;#projects_grid_editable&apos;).grid(&apos;getEditor&apos;, &quot;projectCode&quot;).textbox(&apos;setValue&apos;,projectId); $(&apos;#projects_grid_editable&apos;).grid(&apos;getEditor&apos;, &quot;projectCode&quot;).textbox(&apos;disable&apos;);// $(&apos;#projects_grid_editable&apos;).grid(&apos;saveRow&apos;, &#123;rowIndex : rowIndex, rowData:&#123;&apos;projectCode&apos;:projectId&#125;, command:&apos;update&apos;&#125;); &#125;); &#125; &#125;&#125; 5.将主表的数据和副表的数据一起发送给后台(增删改) 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556doSave : function(config, callback) &#123; var gridData = $(&quot;#projects_grid_editable&quot;).grid(&apos;getAllData&apos;); var params = $A(&apos;#receiptMaintenancePage_form&apos;).getSumbitData(); var obj = new Object(); obj.gridData = gridData; obj.mainData = params.data; obj.type = &quot;modify&quot;; var myURL = &quot;platform/appframe/receipt/maintenance/receiptmaintenance/doInsertProject.do&quot;; $app.ajax.ajaxCall(&#123; url : myURL, data : obj, contentType:&apos;application/json&apos;, dataType: &apos;json&apos;, type: &apos;POST&apos;, callback : function(json) &#123; if (config.isSaveAdd) &#123; $A(&quot;#receiptMaintenancePage_form&quot;) .clearFormEditorValue(); _self.indexAction = _self.ACTION.ADD; &#125; else if (config.isSaveClose) &#123; $.closeDialog(); _self.indexAction = &quot;&quot;; &#125; else if (config.isSaveView) &#123; $A(&quot;#receiptMaintenancePage_form&quot;) .toggleFormState(&quot;view&quot;); $A(&quot;#id&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#ticketedPointCode&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#ticketedPointName&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#ticketedPointType&quot;).combobox(&quot;readonly&quot;, true); $A(&quot;#simpleCode&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#dataAcquisitionCycle&quot;).textbox(&quot;readonly&quot;, true);// $A(&quot;#createTime&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#sysAppMode&quot;).combobox(&quot;readonly&quot;, true); $A(&quot;#contacts&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#contactsInfo&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#superOrg&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#isOnline&quot;).textbox(&quot;readonly&quot;, true); $A(&quot;#remark&quot;).textbox(&quot;readonly&quot;, true); // $A(&quot;#sysAppMode&quot;).combobox(&quot;readonly&quot;, true); // $A(&quot;#sysAppModeRadioBox&quot;).radiobox(&quot;readonly&quot;, false);// $A(&quot;#emergencyTicketed&quot;).radiobox(&quot;readonly&quot;, false);// $A(&quot;#emergencyDays&quot;).textbox(&quot;readonly&quot;, false); _self.indexAction = _self.ACTION.VIEW; &#125; if (_self.showPageCallBack) &#123; _self.showPageCallBack(); &#125; &#125; &#125;);&#125; 6.小表的操作 1234567891011121314151617181920initUIExtConfig : function() &#123; var _self = this; this.uiExtConfig = &#123; // 格式 #控件id#:function(控件属性集类)&#123; config.setAttr(&quot;控件属性名&quot;,&quot;属性值&quot;),// // 网格，下拉网格，特殊设置config.getColumn(&quot;网列id&quot;).setAttr(&quot;列属性名&quot;,&quot;列属性值&quot;)config.getButton(&quot;网格内包含的按钮id&quot;).setAttr(&quot;handler&quot;,&quot;点击事件&quot;) // &#125; projects_grid_editable:function(config)&#123; config.getButton(&quot;projects_grid_addBtn&quot;).setAttr(&quot;handler&quot;, _self.appendPGridRow); config.getButton(&quot;projects_grid_deleteBtn&quot;).setAttr(&quot;handler&quot;, _self.deletePGridRow); &#125;, receipts_grid_editable:function(config)&#123; config.getButton(&quot;receipts_grid_addBtn&quot;).setAttr(&quot;handler&quot;, _self.appendRGridRow); config.getButton(&quot;receipts_grid_deleteBtn&quot;).setAttr(&quot;handler&quot;, _self.deleteRGridRow); &#125;, users_grid_editable:function(config)&#123; config.getButton(&quot;users_grid_addBtn&quot;).setAttr(&quot;handler&quot;, _self.appendUGridRow); config.getButton(&quot;users_grid_deleteBtn&quot;).setAttr(&quot;handler&quot;, _self.deleteUGridRow); &#125; &#125;&#125; 前后台请求1.其中BS使用到的ajax自带的方式 123456789101112131415161718192021222324252627前端JS：$app.ajax.ajaxCall(&#123; url : url, data : jsonData, callback : function(data) &#123; $(&quot;#receiptMaintenancePage_grid&quot;).grid(&quot;reload&quot;); &#125;&#125;);后台controller:public AajaxResult queryProect(@requestBody 对象 对象名)&#123;&#125;需要注意的是：Json格式：&#123; mainData:&#123;id:&apos;&apos;,name:&apos;&apos;&#125;, gridData:[&#123;gId:&apos;&apos;,gName:&apos;&apos;&#125;,&#123;gId:&apos;&apos;,gName:&apos;&apos;&#125;]&#125;pojo数据：public class myJsonRequest&#123; private Object mainData; private List&lt;Object&gt; gridData;&#125;才可以接受到 2.BS使用$.ajax({});方式 12]]></content>
@@ -53,17 +141,6 @@
       </categories>
       <tags>
         <tag>bs学习记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[网站框架初识]]></title>
-    <url>%2F2017%2F08%2F28%2F%E7%BD%91%E7%AB%99%E6%A1%86%E6%9E%B6%E5%88%9D%E8%AF%86%2F</url>
-    <content type="text"><![CDATA[摘要: 网站框架初识，其中框架的演变和技术 网站框架初识 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。 单一应用架构 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。 垂直应用架构 当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。 分布式服务架构 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式服务框架(RPC)是关键。 流动计算架构 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。 待续… 参考的网站：dubbo]]></content>
-      <categories>
-        <category>网站框架初识</category>
-      </categories>
-      <tags>
-        <tag>网站框架初识</tag>
       </tags>
   </entry>
   <entry>
@@ -89,14 +166,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Jetbrains软件(WS、IJ)]]></title>
-    <url>%2F2017%2F08%2F28%2F%E7%A0%B4%E8%A7%A3Jetbrains%E8%BD%AF%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[摘要: 破解Jetbrains软件 Ubuntu下面 PHPSTORM2017.2破解方法 在 http://idea.lanyus.com/上面新下载一个破解文件。 破解步骤 将JetbrainsCrack-2.6.3_proc.jar放到phpstorm安装目录的lib文件夹下面 进入到phpstorm安装目录的bin目录下面。找到phpstorm64.vmoptions文件，然后打开，在最后面一行输入-javaagent:/opt/phpstorm2017/lib/JetbrainsCrack-2.6.3_proc.jar保存文件。 打开http://idea.lanyus.com/getkey?userName=username username可以随便更改成你想要的，然后生成一个激活码， 再打开phpstorm，选择Activation Code选项，将生成的激活码复制进去，然后激活。 完结 重启phpstorm，然后就可以开始coding之路了。]]></content>
+    <title><![CDATA[网站框架初识]]></title>
+    <url>%2F2017%2F08%2F28%2F%E7%BD%91%E7%AB%99%E6%A1%86%E6%9E%B6%E5%88%9D%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[摘要: 网站框架初识，其中框架的演变和技术 网站框架初识 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。 单一应用架构 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。 垂直应用架构 当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。 分布式服务架构 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式服务框架(RPC)是关键。 流动计算架构 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。 待续… 参考的网站：dubbo]]></content>
       <categories>
-        <category>Jetbrains</category>
+        <category>网站框架初识</category>
       </categories>
       <tags>
-        <tag>Jetbrains</tag>
+        <tag>网站框架初识</tag>
       </tags>
   </entry>
   <entry>
@@ -108,6 +185,17 @@
       </categories>
       <tags>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Jetbrains软件(WS、IJ)]]></title>
+    <url>%2F2017%2F08%2F28%2F%E7%A0%B4%E8%A7%A3Jetbrains%E8%BD%AF%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[摘要: 破解Jetbrains软件 Ubuntu下面 PHPSTORM2017.2破解方法 在 http://idea.lanyus.com/上面新下载一个破解文件。 破解步骤 将JetbrainsCrack-2.6.3_proc.jar放到phpstorm安装目录的lib文件夹下面 进入到phpstorm安装目录的bin目录下面。找到phpstorm64.vmoptions文件，然后打开，在最后面一行输入-javaagent:/opt/phpstorm2017/lib/JetbrainsCrack-2.6.3_proc.jar保存文件。 打开http://idea.lanyus.com/getkey?userName=username username可以随便更改成你想要的，然后生成一个激活码， 再打开phpstorm，选择Activation Code选项，将生成的激活码复制进去，然后激活。 完结 重启phpstorm，然后就可以开始coding之路了。]]></content>
+      <categories>
+        <category>Jetbrains</category>
+      </categories>
+      <tags>
+        <tag>Jetbrains</tag>
       </tags>
   </entry>
   <entry>
