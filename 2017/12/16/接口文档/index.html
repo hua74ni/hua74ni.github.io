@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: 接口文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-16T12:41:39.323Z">
+<meta property="og:updated_time" content="2017-12-16T12:45:49.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口文档">
 <meta name="twitter:description" content="摘要: 接口文档">
@@ -445,120 +445,139 @@
 <a id="more"></a>
 <h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">AjaxResult 返回的数据</div><div class="line">&#123;</div><div class="line">    &quot;statusCode&quot;: 200,</div><div class="line">    &quot;message&quot;: &quot;操作成功&quot;,</div><div class="line">    &quot;causeBy&quot;: null,</div><div class="line">    &quot;callBackTypes&quot;: null,</div><div class="line">    &quot;method&quot;: null,</div><div class="line">    &quot;needTranslate&quot;: false,</div><div class="line">    &quot;type&quot;: &quot;__custom&quot;,</div><div class="line">    &quot;data&quot;: null,	//如果需要data的时候可以在此处获取</div><div class="line">    &quot;translateBodys&quot;: null,</div><div class="line">    &quot;callbackType&quot;: null</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h2><ul>
-<li><p>用户登录  </p>
-<p>  url： /onlineShopping/login.do<br>  参数：{“userId”:”数据”}<br>  response:    ajaxResult</p>
-</li>
-<li><p>用户退出</p>
-<p>  url： /onlineShopping/logout.do<br>  参数：{User:属性}<br>  //页面重定向(后续对应修改) 也可以改成异步方式<br>  response:    “redirect:login.jsp”;</p>
-</li>
+<li>用户登录  </li>
 </ul>
-<h2 id="用户user"><a href="#用户user" class="headerlink" title="用户user"></a>用户user</h2><ul>
-<li><p>通过userId获取user信息  </p>
-<p>  url： /onlineShopping/user/loadUser.do<br>  参数：{“userId”:”数据”}<br>  response:    user对象</p>
-</li>
-<li><p>增user</p>
-<p>  url： /onlineShopping/user/addUser.do<br>  参数：{User:属性}<br>  response:    ajaxResult</p>
-</li>
-<li><p>删user</p>
+<pre><code>url： /onlineShopping/login.do
+参数：{&quot;userId&quot;:&quot;数据&quot;}
+response:    ajaxResult
+</code></pre><ul>
+<li>用户退出</li>
+</ul>
+<pre><code>url： /onlineShopping/logout.do
+参数：{User:属性}
+//页面重定向(后续对应修改) 也可以改成异步方式
+response:    &quot;redirect:login.jsp&quot;;
+</code></pre><h2 id="用户user"><a href="#用户user" class="headerlink" title="用户user"></a>用户user</h2><ul>
+<li>通过userId获取user信息  </li>
+</ul>
+<pre><code>url： /onlineShopping/user/loadUser.do
+参数：{&quot;userId&quot;:&quot;数据&quot;}
+response:    user对象
+</code></pre><ul>
+<li>增user</li>
+</ul>
+<pre><code>url： /onlineShopping/user/addUser.do
+参数：{User:属性}
+response:    ajaxResult
+</code></pre><ul>
+<li>删user</li>
+</ul>
 <pre><code>url： /onlineShopping/user/deleteUser.do
 参数：{&quot;userId&quot;:&quot;数据&quot;}
 response:    ajaxResult
-</code></pre></li>
-<li><p>改user</p>
+</code></pre><ul>
+<li>改user</li>
+</ul>
 <pre><code>url： /onlineShopping/user/updateUser.do
 参数：{User:属性}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><h2 id="商家shop"><a href="#商家shop" class="headerlink" title="商家shop"></a>商家shop</h2><ul>
+<li>通过shopId获取shop信息  </li>
 </ul>
-<h2 id="商家shop"><a href="#商家shop" class="headerlink" title="商家shop"></a>商家shop</h2><ul>
-<li><p>通过shopId获取shop信息  </p>
-<p>  url： /onlineShopping/shop/loadShop.do<br>  参数：{“shopId”:”数据”}<br>  response:    shop对象</p>
-</li>
-<li><p>增shop</p>
-<p>  url： /onlineShopping/shop/addShop.do<br>  参数：{Shop:属性}<br>  response:    ajaxResult</p>
-</li>
-<li><p>删shop</p>
+<pre><code>url： /onlineShopping/shop/loadShop.do
+参数：{&quot;shopId&quot;:&quot;数据&quot;}
+response:    shop对象
+</code></pre><ul>
+<li>增shop   </li>
+</ul>
+<pre><code>url： /onlineShopping/shop/addShop.do
+参数：{Shop:属性}
+response:    ajaxResult
+</code></pre><ul>
+<li>删shop   </li>
+</ul>
 <pre><code>url： /onlineShopping/shop/deleteShop.do
 参数：{&quot;shopId&quot;:&quot;数据&quot;}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><ul>
+<li>改shop   </li>
 </ul>
-<ul>
-<li><p>改shop</p>
 <pre><code>url： /onlineShopping/shop/updateShop.do
 参数：{Shop:属性}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><h2 id="商品goods"><a href="#商品goods" class="headerlink" title="商品goods"></a>商品goods</h2><ul>
+<li>通过goodsId获取goods信息  </li>
 </ul>
-<h2 id="商品goods"><a href="#商品goods" class="headerlink" title="商品goods"></a>商品goods</h2><ul>
-<li><p>通过goodsId获取goods信息  </p>
-<p>  url： /onlineShopping/goods/loadGoods.do<br>  参数：{“goodsId”:”数据”}<br>  response:    goods对象</p>
-</li>
-<li><p>增goods</p>
-<p>  url： /onlineShopping/goods/addGoods.do<br>  参数：{Goods:属性}<br>  response:    ajaxResult</p>
-</li>
-<li><p>删goods</p>
+<pre><code>url： /onlineShopping/goods/loadGoods.do
+参数：{&quot;goodsId&quot;:&quot;数据&quot;}
+response:    goods对象
+</code></pre><ul>
+<li>增goods   </li>
+</ul>
+<pre><code>url： /onlineShopping/goods/addGoods.do
+参数：{Goods:属性}
+response:    ajaxResult
+</code></pre><ul>
+<li>删goods   </li>
+</ul>
 <pre><code>url： /onlineShopping/goods/deleteGoods.do
 参数：{&quot;goodsId&quot;:&quot;数据&quot;}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><ul>
+<li>改goods   </li>
 </ul>
-<ul>
-<li><p>改goods</p>
 <pre><code>url： /onlineShopping/goods/updateGoods.do
 参数：{Goods:属性}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><h2 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h2><ul>
+<li>通过orderId获取order信息     </li>
 </ul>
-<h2 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h2><ul>
-<li><p>通过orderId获取order信息  </p>
-<p>  url： /onlineShopping/order/loadOrder.do<br>  参数：{“orderId”:”数据”}<br>  response:    ajaxResult</p>
-</li>
+<pre><code>url： /onlineShopping/order/loadOrder.do
+参数：{&quot;orderId&quot;:&quot;数据&quot;}
+response:    ajaxResult
+</code></pre><ul>
+<li>增order   </li>
 </ul>
-<ul>
-<li><p>增order</p>
-<p>  url： /onlineShopping/order/addOrder.do<br>  参数：{Order:属性}<br>  response:    order对象</p>
-</li>
+<pre><code>url： /onlineShopping/order/addOrder.do
+参数：{Order:属性}
+response:    order对象
+</code></pre><ul>
+<li>删order   </li>
 </ul>
-<ul>
-<li><p>删order</p>
 <pre><code>url： /onlineShopping/order/deleteOrder.do
 参数：{&quot;orderId&quot;:&quot;数据&quot;}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><ul>
+<li>改order   </li>
 </ul>
-<ul>
-<li><p>改order</p>
 <pre><code>url： /onlineShopping/order/updateOrder.do
 参数：{Order:属性}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><h2 id="反馈feedBack"><a href="#反馈feedBack" class="headerlink" title="反馈feedBack"></a>反馈feedBack</h2><ul>
+<li>通过feedBackId获取feedBack信息     </li>
 </ul>
-<h2 id="反馈feedBack"><a href="#反馈feedBack" class="headerlink" title="反馈feedBack"></a>反馈feedBack</h2><ul>
-<li><p>通过feedBackId获取feedBack信息  </p>
-<p>  url： /onlineShopping/feedBack/loadFeedBack.do<br>  参数：{“feedBackId”:”数据”}<br>  response:    feedBack对象</p>
-</li>
+<pre><code>url： /onlineShopping/feedBack/loadFeedBack.do
+参数：{&quot;feedBackId&quot;:&quot;数据&quot;}
+response:    feedBack对象
+</code></pre><ul>
+<li>增feedBack   </li>
 </ul>
-<ul>
-<li><p>增feedBack</p>
-<p>  url： /onlineShopping/feedBack/addFeedBack.do<br>  参数：{FeedBack:属性}<br>  response:    ajaxResult</p>
-</li>
+<pre><code>url： /onlineShopping/feedBack/addFeedBack.do
+参数：{FeedBack:属性}
+response:    ajaxResult
+</code></pre><ul>
+<li>删feedBack   </li>
 </ul>
-<ul>
-<li><p>删feedBack</p>
 <pre><code>url： /onlineShopping/feedBack/deleteFeedBack.do
 参数：{&quot;feedBackId&quot;:&quot;数据&quot;}
 response:    ajaxResult
-</code></pre></li>
+</code></pre><ul>
+<li>改feedBack   </li>
 </ul>
-<ul>
-<li><p>改feedBack</p>
 <pre><code>url： /onlineShopping/feedBack/updateFeedBack.do
 参数：{FeedBack:属性}
 response:    ajaxResult
-</code></pre></li>
-</ul>
-
+</code></pre>
       
     </div>
     
