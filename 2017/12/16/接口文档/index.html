@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: 接口文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T12:31:09.711Z">
+<meta property="og:updated_time" content="2017-12-17T12:36:16.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口文档">
 <meta name="twitter:description" content="摘要: 接口文档">
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  741 字
+                  747 字
                 </span>
               
 
@@ -445,14 +445,21 @@
 <a id="more"></a>
 <h1 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h1><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">AjaxResult 返回的数据</div><div class="line">&#123;</div><div class="line">    &quot;statusCode&quot;: 200,</div><div class="line">    &quot;message&quot;: &quot;操作成功&quot;,</div><div class="line">    &quot;causeBy&quot;: null,</div><div class="line">    &quot;callBackTypes&quot;: null,</div><div class="line">    &quot;method&quot;: null,</div><div class="line">    &quot;needTranslate&quot;: false,</div><div class="line">    &quot;type&quot;: &quot;__custom&quot;,</div><div class="line">    &quot;data&quot;: null,	//如果需要data的时候可以在此处获取</div><div class="line">    &quot;translateBodys&quot;: null,</div><div class="line">    &quot;callbackType&quot;: null</div><div class="line">&#125;</div><div class="line"></div><div class="line">所有属性中的 createTime 和 lastModifyTime 都由后台解决即可</div></pre></td></tr></table></figure>
 <h2 id="用户登录"><a href="#用户登录" class="headerlink" title="用户登录"></a>用户登录</h2><ul>
-<li><p>用户登录  </p>
-<p>  url： /onlineShopping/login.do<br>  参数：{“userId”:”数据”}<br>  response:    ajaxResult</p>
-</li>
-<li><p>用户退出</p>
-<p>  url： /onlineShopping/logout.do<br>  参数：{User:属性}<br>  //页面重定向(后续对应修改) 也可以改成异步方式<br>  response:    “redirect:login.jsp”;</p>
-</li>
+<li>用户登录   </li>
 </ul>
-<h2 id="用户user"><a href="#用户user" class="headerlink" title="用户user"></a>用户user</h2><ul>
+<pre><code>异步Ajax
+url： /onlineShopping/login.do
+参数：{&quot;userId&quot;:&quot;数据&quot;}
+response:    ajaxResult
+</code></pre><ul>
+<li>用户退出</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/logout.do
+参数：{User:属性}
+//页面重定向(后续对应修改) 也可以改成异步方式
+response:    &quot;redirect:login.jsp&quot;;
+</code></pre><h2 id="用户user"><a href="#用户user" class="headerlink" title="用户user"></a>用户user</h2><ul>
 <li>通过userId获取user信息  </li>
 </ul>
 <pre><code>异步Ajax
