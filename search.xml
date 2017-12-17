@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[接口文档]]></title>
     <url>%2F2017%2F12%2F16%2F%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%2F</url>
-    <content type="text"><![CDATA[摘要: 接口文档 接口文档注意12345678910111213141516AjaxResult 返回的数据&#123; &quot;statusCode&quot;: 200, &quot;message&quot;: &quot;操作成功&quot;, &quot;causeBy&quot;: null, &quot;callBackTypes&quot;: null, &quot;method&quot;: null, &quot;needTranslate&quot;: false, &quot;type&quot;: &quot;__custom&quot;, &quot;data&quot;: null, //如果需要data的时候可以在此处获取 &quot;translateBodys&quot;: null, &quot;callbackType&quot;: null&#125;所有属性中的 createTime 和 lastModifyTime 都由后台解决即可 用户登录 用户登录 异步Ajax url： /onlineShopping/login.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: ajaxResult 用户退出 异步Ajax url： /onlineShopping/logout.do 参数：{User:属性} //页面重定向(后续对应修改) 也可以改成异步方式 response: &quot;redirect:login.jsp&quot;; 用户user 通过userId获取user信息 异步Ajax url： /onlineShopping/user/loadUser.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: user对象 增user 异步Ajax url： /onlineShopping/user/addUser.do 参数：{User:属性} response: ajaxResult(data中存放用户信息) 删user 异步Ajax url： /onlineShopping/user/deleteUser.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: ajaxResult 改user 表单Form url： /onlineShopping/user/updateUser.do 参数：{User:属性} response: ajaxResult 校验userCode是否存在 异步Ajax url： /onlineShopping/user/checkUserCode.do 参数：{&quot;userCode&quot;:&quot;值&quot;} response: 整型(0:表示不存在) 商家shop 通过shopId获取shop信息 异步Ajax url： /onlineShopping/shop/loadShop.do 参数：{&quot;shopId&quot;:&quot;数据&quot;} response: shop对象 增shop 表单Form url： /onlineShopping/shop/addShop.do 参数：Shop的属性和图片 参数接收名 shopImage response: ajaxResult 注意：未传图片也默认添加失败 删shop 异步Ajax url： /onlineShopping/shop/deleteShop.do 参数：{&quot;shopId&quot;:&quot;数据&quot;} response: ajaxResult 改shop 表单Form url： /onlineShopping/shop/updateShop.do 参数：Shop的属性和图片 参数接收名 shopImage response: ajaxResult 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的 加载图片 &lt;img src=&quot;url?参数&quot; url： /onlineShopping/shop/loadImage.do 参数：shopLogoPath=shop.shopLogoPath&amp;type=shop 注意：type就传2种值 goods/shop response: 图片的二进制数据 校验shopName是否存在 异步Ajax url： /onlineShopping/shop/checkShopName.do 参数：{&quot;shopName&quot;:&quot;值&quot;} response: 整型(0:表示不存在) 商品goods 通过goodsId获取goods信息 异步Ajax url： /onlineShopping/goods/loadGoods.do 参数：{&quot;goodsId&quot;:&quot;数据&quot;} response: goods对象 增goods 表单Form url： /onlineShopping/goods/addGoods.do 参数：goods的属性和图片 参数接收名 goodsImage response: ajaxResult 注意：未传图片也默认添加失败 删goods 异步Ajax url： /onlineShopping/goods/deleteGoods.do 参数：{&quot;goodsId&quot;:&quot;数据&quot;} response: ajaxResult 改goods 表单Form url： /onlineShopping/goods/updateGoods.do 参数：goods的属性和图片 参数接收名 goodsImage response: ajaxResult 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的 订单order 通过orderId获取order信息 异步Ajax url： /onlineShopping/order/loadOrder.do 参数：{&quot;orderId&quot;:&quot;数据&quot;} response: ajaxResult 增order 异步Ajax url： /onlineShopping/order/addOrder.do 参数：{Order:属性} response: order对象 删order 异步Ajax url： /onlineShopping/order/deleteOrder.do 参数：{&quot;orderId&quot;:&quot;数据&quot;} response: ajaxResult 改order 异步Ajax url： /onlineShopping/order/updateOrder.do 参数：{Order:属性} response: ajaxResult 反馈feedBack 通过feedBackId获取feedBack信息 异步Ajax url： /onlineShopping/feedBack/loadFeedBack.do 参数：{&quot;feedBackId&quot;:&quot;数据&quot;} response: feedBack对象 增feedBack 异步Ajax url： /onlineShopping/feedBack/addFeedBack.do 参数：{FeedBack:属性} response: ajaxResult 删feedBack 异步Ajax url： /onlineShopping/feedBack/deleteFeedBack.do 参数：{&quot;feedBackId&quot;:&quot;数据&quot;} response: ajaxResult 改feedBack 异步Ajax url： /onlineShopping/feedBack/updateFeedBack.do 参数：{FeedBack:属性} response: ajaxResult]]></content>
+    <content type="text"><![CDATA[摘要: 接口文档 接口文档注意12345678910111213141516AjaxResult 返回的数据&#123; &quot;statusCode&quot;: 200, &quot;message&quot;: &quot;操作成功&quot;, &quot;causeBy&quot;: null, &quot;callBackTypes&quot;: null, &quot;method&quot;: null, &quot;needTranslate&quot;: false, &quot;type&quot;: &quot;__custom&quot;, &quot;data&quot;: null, //如果需要data的时候可以在此处获取 &quot;translateBodys&quot;: null, &quot;callbackType&quot;: null&#125;所有属性中的 createTime 和 lastModifyTime 都由后台解决即可 用户登录 用户登录 异步Ajax url： /onlineShopping/login.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: ajaxResult 用户退出 异步Ajax url： /onlineShopping/logout.do 参数：{User:属性} //页面重定向(后续对应修改) 也可以改成异步方式 response: &quot;redirect:login.jsp&quot;; 获取当前已经登录的用户信息 异步Ajax url： /onlineShopping/getCurrentLoginUser.do 参数：{无} response: User对象的信息 用户user 通过userId获取user信息 异步Ajax url： /onlineShopping/user/loadUser.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: user对象 增user 异步Ajax url： /onlineShopping/user/addUser.do 参数：{User:属性} response: ajaxResult(data中存放用户信息) 删user 异步Ajax url： /onlineShopping/user/deleteUser.do 参数：{&quot;userId&quot;:&quot;数据&quot;} response: ajaxResult 改user 表单Form url： /onlineShopping/user/updateUser.do 参数：{User:属性} response: ajaxResult 校验userCode是否存在 异步Ajax url： /onlineShopping/user/checkUserCode.do 参数：{&quot;userCode&quot;:&quot;值&quot;} response: 整型(0:表示不存在) 商家shop 通过shopId获取shop信息 异步Ajax url： /onlineShopping/shop/loadShop.do 参数：{&quot;shopId&quot;:&quot;数据&quot;} response: shop对象 增shop 表单Form url： /onlineShopping/shop/addShop.do 参数：Shop的属性和图片 参数接收名 shopImage response: ajaxResult 注意：未传图片也默认添加失败 删shop 异步Ajax url： /onlineShopping/shop/deleteShop.do 参数：{&quot;shopId&quot;:&quot;数据&quot;} response: ajaxResult 改shop 表单Form url： /onlineShopping/shop/updateShop.do 参数：Shop的属性和图片 参数接收名 shopImage response: ajaxResult 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的 加载图片 &lt;img src=&quot;url?参数&quot; url： /onlineShopping/shop/loadImage.do 参数：shopLogoPath=shop.shopLogoPath&amp;type=shop 注意：type就传2种值 goods/shop response: 图片的二进制数据 校验shopName是否存在 异步Ajax url： /onlineShopping/shop/checkShopName.do 参数：{&quot;shopName&quot;:&quot;值&quot;} response: 整型(0:表示不存在) 商品goods 通过goodsId获取goods信息 异步Ajax url： /onlineShopping/goods/loadGoods.do 参数：{&quot;goodsId&quot;:&quot;数据&quot;} response: goods对象 增goods 表单Form url： /onlineShopping/goods/addGoods.do 参数：goods的属性和图片 参数接收名 goodsImage response: ajaxResult 注意：未传图片也默认添加失败 删goods 异步Ajax url： /onlineShopping/goods/deleteGoods.do 参数：{&quot;goodsId&quot;:&quot;数据&quot;} response: ajaxResult 改goods 表单Form url： /onlineShopping/goods/updateGoods.do 参数：goods的属性和图片 参数接收名 goodsImage response: ajaxResult 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的 获取当前商家对应商家的商品 进行分页 异步Ajax url： /onlineShopping/goods/getGoodsByUserId.do 参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值} 参数说明：第几页,一页几个(前端不传，后台默认0,10) response: PageInfo&lt;Goods&gt; 分页的数据(包含原需要展示的数据) 订单order 通过orderId获取order信息 异步Ajax url： /onlineShopping/order/loadOrder.do 参数：{&quot;orderId&quot;:&quot;数据&quot;} response: ajaxResult 增order 异步Ajax url： /onlineShopping/order/addOrder.do 参数：{Order:属性} response: order对象 删order 异步Ajax url： /onlineShopping/order/deleteOrder.do 参数：{&quot;orderId&quot;:&quot;数据&quot;} response: ajaxResult 改order 异步Ajax url： /onlineShopping/order/updateOrder.do 参数：{Order:属性} response: ajaxResult 添加临时订单 异步Ajax url： /onlineShopping/order/addTempOrder.do 参数：{Order:属性} response: List&lt;Order&gt; 添加后order的数组 删除临时订单 异步Ajax url： /onlineShopping/order/deleteTempOrder.do 参数：{orderId:&quot;值&quot;} response: List&lt;Order&gt; 删除后order的数组 展示临时订单 异步Ajax url： /onlineShopping/order/getTempOrder.do 参数：{无} response: List&lt;Order&gt; order的数组 获取该用户的订单信息 进行分页 异步Ajax url： /onlineShopping/order/getOrderByUserId.do 参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值} 参数说明：第几页,一页几个(前端不传，后台默认0,10) response: PageInfo&lt;Order&gt; 分页的数据(包含原需要展示的数据) 反馈feedBack 通过feedBackId获取feedBack信息 异步Ajax url： /onlineShopping/feedBack/loadFeedBack.do 参数：{&quot;feedBackId&quot;:&quot;数据&quot;} response: feedBack对象 增feedBack 异步Ajax url： /onlineShopping/feedBack/addFeedBack.do 参数：{FeedBack:属性} response: ajaxResult 删feedBack 异步Ajax url： /onlineShopping/feedBack/deleteFeedBack.do 参数：{&quot;feedBackId&quot;:&quot;数据&quot;} response: ajaxResult 改feedBack 异步Ajax url： /onlineShopping/feedBack/updateFeedBack.do 参数：{FeedBack:属性} response: ajaxResult 判断 当前用户是否已经评论该商品 异步Ajax url： /onlineShopping/feedBack/checkUserIsFeedBack.do 参数：{&quot;goodsId&quot;:&quot;值&quot;} response: 整型 (评论过1 未评论为0)]]></content>
       <categories>
         <category>接口文档</category>
       </categories>
@@ -166,17 +166,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[进入BS部门第一天]]></title>
-    <url>%2F2017%2F09%2F20%2F%E9%83%A8%E9%97%A8%E7%AC%AC%E4%B8%80%E5%A4%A9%2F</url>
-    <content type="text"><![CDATA[摘要: 遇到问题及解决 遇到问题及解决 web项目出现Dynamic Web Module 无法从2.3转化为2.5的版本。 解决方案：首先出现问题的原因在于你的web.xml： 1234&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee&quot;xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt; 项目还是2.3的，而使用的version=2.5的，项目会报错（大致的意思就是无法转化），可以通过在本地项目中.setting文件中进行手动改变为2.5。 引用的项目来自gitlab上，gitlab所引用的项目已经在gitlab上已经更新的，但是在maven repository中的还未改变。 解决方案：可以通过将gitlab上的项目下载下来，然后进行install 生成新的jar包或者其他的包 其中用到的操作： git init git clone gitLab地址 cd 对应的项目中 mvn clean install 生成最新的jar包或其他包 将项目也导入进eclipse中，原本引用该gitlab上的项目优先在本地上进行搜索并且加载，如果没有在从远程repository中下载对应的包。]]></content>
-      <categories>
-        <category>遇到问题及解决</category>
-      </categories>
-      <tags>
-        <tag>遇到问题及解决</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[mac_eclipse调制代码方式]]></title>
     <url>%2F2017%2F09%2F20%2Feclipse%E8%B0%83%E5%88%B6%E4%BB%A3%E7%A0%81%E6%96%B9%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[摘要: mac_eclipse调制代码方式 调制代码时，常用到的方式shift + command + T -&gt; Open Type control + H -&gt; Search (File Search、Java Search …) command + O -&gt; 查看该class中的方法和成员变量 command + e -&gt; 快速转换编辑器 option + command + 上下 -&gt; 将高亮显示处往上或下复制 command + m -&gt; 窗口最大化切换 command + / -&gt; 自动注释掉选择的代码块 command + shift + / -&gt; 自动注释掉选择的代码块 command + shift + X 和 command + shift + Y -&gt; 英文字母大小写的转换 command +shift + O -&gt; 自动引入包和删除无用包 command +option + 左右 -&gt; 回到上次光标的位置 debug模式情况下：想立刻执行一条语句刚写的语句，此时断点正在附近: command + U 左边的是将所有包缩小 右边勾选 会自动跟从你所浏览的代码所在的包的位置 Projects Presentation(项目介绍)展示方式： Flat（平坦式 一大串）； Hierarchical（分等级式 像ztree的感觉） Variables 可以在debug时看到对应的变量的情况BreakPoints 可以在这里看到你打得断点的信息（位置，数量，也可以对端点进行操作）Expressions 在端点执行过程中 执行想要的方法 对Tomcat进行部分操作修改Servers中某个Tomcat的config(后台代码修改不会导致Tomcat重启) server.xml： 修改最后几行的 Context标签中 reloadable=”false” debug=”0” 现在有个很好用的插件不需要上面的配置就可以实现 后台代码修改即可以使用，不需要重启Tomcat。JRebel 支持 eclipse、Intelli IDEA、android studio 对Git进行操作 Commit的操作然后Pull（更新）Push（提交git合并） 对Maven包依赖查看]]></content>
@@ -185,6 +174,17 @@
       </categories>
       <tags>
         <tag>mac_eclipse调制代码方式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[进入BS部门第一天]]></title>
+    <url>%2F2017%2F09%2F20%2F%E9%83%A8%E9%97%A8%E7%AC%AC%E4%B8%80%E5%A4%A9%2F</url>
+    <content type="text"><![CDATA[摘要: 遇到问题及解决 遇到问题及解决 web项目出现Dynamic Web Module 无法从2.3转化为2.5的版本。 解决方案：首先出现问题的原因在于你的web.xml： 1234&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee&quot;xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt; 项目还是2.3的，而使用的version=2.5的，项目会报错（大致的意思就是无法转化），可以通过在本地项目中.setting文件中进行手动改变为2.5。 引用的项目来自gitlab上，gitlab所引用的项目已经在gitlab上已经更新的，但是在maven repository中的还未改变。 解决方案：可以通过将gitlab上的项目下载下来，然后进行install 生成新的jar包或者其他的包 其中用到的操作： git init git clone gitLab地址 cd 对应的项目中 mvn clean install 生成最新的jar包或其他包 将项目也导入进eclipse中，原本引用该gitlab上的项目优先在本地上进行搜索并且加载，如果没有在从远程repository中下载对应的包。]]></content>
+      <categories>
+        <category>遇到问题及解决</category>
+      </categories>
+      <tags>
+        <tag>遇到问题及解决</tag>
       </tags>
   </entry>
   <entry>
@@ -199,14 +199,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[next博客进阶]]></title>
-    <url>%2F2017%2F08%2F28%2Fnext%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%2F</url>
-    <content type="text"><![CDATA[摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景 next添加RSS 进入本地hexo目录,输入以下命令: 1npm install hexo-generator-feed 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置: 12345678910# Extensions## Plugins: http://hexo.io/plugins/#RSS订阅plugin:- hexo-generator-feed#Feed Atomfeed:type: atompath: atom.xmllimit: 20 添加主题配置，在主题目录下的_config.yml目录下，添加如下配置: 1rss: /atom.xml 字数统计及阅读时长 Install 1npm install hexo-wordcount --save *修改对应的代码（blog/themes/next/layout/_macro/post.swig） &lt;span title=&quot;{{ __('post.wordcount') }}&quot;&gt; {{ wordcount(post.content) }} 字 &lt;/span&gt; &lt;span title=&quot;{{ __('post.min2read') }}&quot;&gt; {{ min2read(post.content) }} 分钟 &lt;/span&gt; next主题修改动态背景(这里只说next主题在5.1.1以上版本) 在对应的目录下修改(blog/themes/next/_config.yml)自行尝试 123456789101112131415# Canvas-nestcanvas_nest: true# three_wavesthree_waves: false# canvas_linescanvas_lines: false# canvas_spherecanvas_sphere: false# Only fit scheme Pisces# Canvas-ribboncanvas_ribbon: true 参考的网站：Hexo文章计数插件WordCounthexo博客安装RSS插件next主题如何添加动态背景]]></content>
+    <title><![CDATA[网站框架初识]]></title>
+    <url>%2F2017%2F08%2F28%2F%E7%BD%91%E7%AB%99%E6%A1%86%E6%9E%B6%E5%88%9D%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[摘要: 网站框架初识，其中框架的演变和技术 网站框架初识 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。 单一应用架构 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。 垂直应用架构 当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。 分布式服务架构 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式服务框架(RPC)是关键。 流动计算架构 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。 待续… 参考的网站：dubbo]]></content>
       <categories>
-        <category>next进阶</category>
+        <category>网站框架初识</category>
       </categories>
       <tags>
-        <tag>个人博客</tag>
+        <tag>网站框架初识</tag>
       </tags>
   </entry>
   <entry>
@@ -221,14 +221,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[网站框架初识]]></title>
-    <url>%2F2017%2F08%2F28%2F%E7%BD%91%E7%AB%99%E6%A1%86%E6%9E%B6%E5%88%9D%E8%AF%86%2F</url>
-    <content type="text"><![CDATA[摘要: 网站框架初识，其中框架的演变和技术 网站框架初识 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，亟需一个治理系统确保架构有条不紊的演进。 单一应用架构 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。 垂直应用架构 当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。 分布式服务架构 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式服务框架(RPC)是关键。 流动计算架构 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。 待续… 参考的网站：dubbo]]></content>
+    <title><![CDATA[next博客进阶]]></title>
+    <url>%2F2017%2F08%2F28%2Fnext%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%2F</url>
+    <content type="text"><![CDATA[摘要: next添加RSS、字数统计及阅读时长、next主题修改动态背景 next添加RSS 进入本地hexo目录,输入以下命令: 1npm install hexo-generator-feed 添加配置，在本地hexo根目录下的_config.yml文件中，添加以下配置: 12345678910# Extensions## Plugins: http://hexo.io/plugins/#RSS订阅plugin:- hexo-generator-feed#Feed Atomfeed:type: atompath: atom.xmllimit: 20 添加主题配置，在主题目录下的_config.yml目录下，添加如下配置: 1rss: /atom.xml 字数统计及阅读时长 Install 1npm install hexo-wordcount --save *修改对应的代码（blog/themes/next/layout/_macro/post.swig） &lt;span title=&quot;{{ __('post.wordcount') }}&quot;&gt; {{ wordcount(post.content) }} 字 &lt;/span&gt; &lt;span title=&quot;{{ __('post.min2read') }}&quot;&gt; {{ min2read(post.content) }} 分钟 &lt;/span&gt; next主题修改动态背景(这里只说next主题在5.1.1以上版本) 在对应的目录下修改(blog/themes/next/_config.yml)自行尝试 123456789101112131415# Canvas-nestcanvas_nest: true# three_wavesthree_waves: false# canvas_linescanvas_lines: false# canvas_spherecanvas_sphere: false# Only fit scheme Pisces# Canvas-ribboncanvas_ribbon: true 参考的网站：Hexo文章计数插件WordCounthexo博客安装RSS插件next主题如何添加动态背景]]></content>
       <categories>
-        <category>网站框架初识</category>
+        <category>next进阶</category>
       </categories>
       <tags>
-        <tag>网站框架初识</tag>
+        <tag>个人博客</tag>
       </tags>
   </entry>
   <entry>

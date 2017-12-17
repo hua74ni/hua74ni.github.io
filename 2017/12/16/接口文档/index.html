@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: 接口文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T12:36:16.850Z">
+<meta property="og:updated_time" content="2017-12-17T16:21:24.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口文档">
 <meta name="twitter:description" content="摘要: 接口文档">
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  747 字
+                  1,038 字
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  5 分钟
                 </span>
               
             </div>
@@ -459,6 +459,13 @@ url： /onlineShopping/logout.do
 参数：{User:属性}
 //页面重定向(后续对应修改) 也可以改成异步方式
 response:    &quot;redirect:login.jsp&quot;;
+</code></pre><ul>
+<li>获取当前已经登录的用户信息</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/getCurrentLoginUser.do
+参数：{无}
+response:    User对象的信息
 </code></pre><h2 id="用户user"><a href="#用户user" class="headerlink" title="用户user"></a>用户user</h2><ul>
 <li>通过userId获取user信息  </li>
 </ul>
@@ -568,6 +575,13 @@ url： /onlineShopping/goods/updateGoods.do
 参数：goods的属性和图片 参数接收名 goodsImage
 response:    ajaxResult
 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的
+</code></pre><ul>
+<li>获取当前商家对应商家的商品 进行分页</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/goods/getGoodsByUserId.do
+参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
+response:    PageInfo&lt;Goods&gt;  分页的数据(包含原需要展示的数据)
 </code></pre><h2 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h2><ul>
 <li>通过orderId获取order信息  </li>
 </ul>
@@ -596,6 +610,34 @@ response:    ajaxResult
 url： /onlineShopping/order/updateOrder.do
 参数：{Order:属性}
 response:    ajaxResult
+</code></pre><ul>
+<li>添加临时订单</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/addTempOrder.do
+参数：{Order:属性}
+response:    List&lt;Order&gt; 添加后order的数组
+</code></pre><ul>
+<li>删除临时订单</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/deleteTempOrder.do
+参数：{orderId:&quot;值&quot;}
+response:    List&lt;Order&gt; 删除后order的数组
+</code></pre><ul>
+<li>展示临时订单</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/getTempOrder.do
+参数：{无}
+response:    List&lt;Order&gt; order的数组
+</code></pre><ul>
+<li>获取该用户的订单信息 进行分页</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/getOrderByUserId.do
+参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
+response:    PageInfo&lt;Order&gt;     分页的数据(包含原需要展示的数据)            
 </code></pre><h2 id="反馈feedBack"><a href="#反馈feedBack" class="headerlink" title="反馈feedBack"></a>反馈feedBack</h2><ul>
 <li>通过feedBackId获取feedBack信息  </li>
 </ul>
@@ -624,6 +666,13 @@ response:    ajaxResult
 url： /onlineShopping/feedBack/updateFeedBack.do
 参数：{FeedBack:属性}
 response:    ajaxResult
+</code></pre><ul>
+<li>判断 当前用户是否已经评论该商品</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/feedBack/checkUserIsFeedBack.do
+参数：{&quot;goodsId&quot;:&quot;值&quot;}
+response:    整型 (评论过1 未评论为0)
 </code></pre>
       
     </div>
