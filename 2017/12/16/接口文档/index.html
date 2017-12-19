@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: 接口文档">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T16:21:24.767Z">
+<meta property="og:updated_time" content="2017-12-19T17:35:22.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口文档">
 <meta name="twitter:description" content="摘要: 接口文档">
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,038 字
+                  1,353 字
                 </span>
               
 
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  5 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -532,6 +532,13 @@ url： /onlineShopping/shop/updateShop.do
 response:    ajaxResult
 注意：图片可以不传 默认使用之前的，如果上传图片代替以前的
 </code></pre><ul>
+<li>获取所有的商家数据 进行分页</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/shop/queryShopPage.do
+参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
+response:    PageInfo&lt;Shop&gt; shop分页数据
+</code></pre><ul>
 <li>加载图片</li>
 </ul>
 <pre><code>&lt;img src=&quot;url?参数&quot;
@@ -582,6 +589,20 @@ response:    ajaxResult
 url： /onlineShopping/goods/getGoodsByUserId.do
 参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
 response:    PageInfo&lt;Goods&gt;  分页的数据(包含原需要展示的数据)
+</code></pre><ul>
+<li>获取选中的商家展示对应的商品 进行分页</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/goods/getGoodsByShopId.do
+参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值,&quot;shopId&quot;:&quot;值&quot;}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
+response:    PageInfo&lt;Goods&gt;  分页的数据(包含原需要展示的数据)
+</code></pre><ul>
+<li>首页遍历商品 可选择类型 搜索 分页</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/goods/queryGoodsHomePage.do
+参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值,&quot;goodsName&quot;:&quot;&quot;,&quot;goodsType&quot;:&quot;&quot;}  参数说明：第几页,一页几个(前端不传，后台默认0,10)，后面2个参数可不传
+response:    PageInfo&lt;Goods&gt;  分页的数据(包含原需要展示的数据)            
 </code></pre><h2 id="订单order"><a href="#订单order" class="headerlink" title="订单order"></a>订单order</h2><ul>
 <li>通过orderId获取order信息  </li>
 </ul>
@@ -638,6 +659,20 @@ response:    List&lt;Order&gt; order的数组
 url： /onlineShopping/order/getOrderByUserId.do
 参数：{&quot;pageNum&quot;:数值,&quot;pageSize&quot;:数值}  参数说明：第几页,一页几个(前端不传，后台默认0,10)
 response:    PageInfo&lt;Order&gt;     分页的数据(包含原需要展示的数据)            
+</code></pre><ul>
+<li>当前用户确认订单买家商家都可以</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/confirmOrder.do
+参数：{&quot;orderId&quot;:&quot;值&quot;}
+response:    AjaxResult
+</code></pre><ul>
+<li>当前用户取消订单买家商家都可以</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/order/cancelOrder.do
+参数：{&quot;orderId&quot;:&quot;值&quot;}
+response:    AjaxResult
 </code></pre><h2 id="反馈feedBack"><a href="#反馈feedBack" class="headerlink" title="反馈feedBack"></a>反馈feedBack</h2><ul>
 <li>通过feedBackId获取feedBack信息  </li>
 </ul>
@@ -672,6 +707,13 @@ response:    ajaxResult
 <pre><code>异步Ajax
 url： /onlineShopping/feedBack/checkUserIsFeedBack.do
 参数：{&quot;goodsId&quot;:&quot;值&quot;}
+response:    整型 (评论过1 未评论为0)
+</code></pre><ul>
+<li>商家 回复买家的评论</li>
+</ul>
+<pre><code>异步Ajax
+url： /onlineShopping/feedBack/revertFeedBack.do
+参数：{&quot;feedBackId&quot;:&quot;反馈编码&quot;,&quot;shopRevert&quot;:&quot;商家回复信息&quot;}
 response:    整型 (评论过1 未评论为0)
 </code></pre>
       
