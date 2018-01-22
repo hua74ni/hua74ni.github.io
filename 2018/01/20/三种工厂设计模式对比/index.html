@@ -104,14 +104,14 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: 三种工厂设计模式对比">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://hua74ni.github.io/2018/01/20/三种工厂设计模式对比/images/factory/simpleFactory.png">
-<meta property="og:image" content="https://hua74ni.github.io/2018/01/20/三种工厂设计模式对比/images/factory/factory.png">
-<meta property="og:image" content="https://hua74ni.github.io/2018/01/20/三种工厂设计模式对比/images/factory/abstractFatory.png">
-<meta property="og:updated_time" content="2018-01-22T06:51:47.253Z">
+<meta property="og:image" content="https://hua74ni.github.io/images/factory/simpleFactory.png">
+<meta property="og:image" content="https://hua74ni.github.io/images/factory/factory.png">
+<meta property="og:image" content="https://hua74ni.github.io/images/factory/abstractFatory.png">
+<meta property="og:updated_time" content="2018-01-22T06:56:57.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="三种工厂设计模式对比">
 <meta name="twitter:description" content="摘要: 三种工厂设计模式对比">
-<meta name="twitter:image" content="https://hua74ni.github.io/2018/01/20/三种工厂设计模式对比/images/factory/simpleFactory.png">
+<meta name="twitter:image" content="https://hua74ni.github.io/images/factory/simpleFactory.png">
 
 
 
@@ -450,16 +450,16 @@
 <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><pre><code>    你传入一个参数，根据参数来返回你需要的实例。
     个人理解：专业生产产品(比如该工厂只生产各种鼠标，
 一个工厂完成各种生产，压力大；代码上实现简单)
-</code></pre><p><img src="./images/factory/simpleFactory.png" alt="simple_factory"></p>
+</code></pre><p><img src="/images/factory/simpleFactory.png" alt="simple_factory"></p>
 <h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><pre><code>    创建一个工厂接口，其他具体的工厂类去实现这个接口，
 需要的的时候就直接去new这个工厂的实例，然后调用创建方法。
     个人理解：同样是专业生产产品(只生产各种鼠标方式，
 但是不同于简单工厂，专业的工厂生产该产品；工厂方法；代码上实现上相对简单工厂比较麻烦)
-</code></pre><p><img src="./images/factory/factory.png" alt="factory_method"></p>
+</code></pre><p><img src="/images/factory/factory.png" alt="factory_method"></p>
 <h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><pre><code>    首先要有一个工厂接口，再有若干个实现类去实现这个接口，
 然后子类去继承这个生产线去实现具体生产什么。
     个人理解：生产多种类型的产品(特定的工厂生产该厂对应的多种产品；代码实现起来比工厂模式比较复杂，多个产品需要维护。如果抽象工厂模式只有一个产品就变成了工厂模式了)
-</code></pre><p><img src="./images/factory/abstractFatory.png" alt="factory_method"></p>
+</code></pre><p><img src="/images/factory/abstractFatory.png" alt="factory_method"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://ichennan.com/2016/08/09/DesignPattern.html" target="_blank" rel="external">大佬的总结</a></p>
 
       
