@@ -104,12 +104,12 @@
 <meta property="og:site_name" content="华仔的博客">
 <meta property="og:description" content="摘要: mongoDB学习记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://hua74ni.github.io/2018/03/13/mongoDB学习记录/images/mongoDB/mongoDB.jpg">
-<meta property="og:updated_time" content="2018-03-13T03:51:58.536Z">
+<meta property="og:image" content="https://hua74ni.github.io/images/mongoDB/mongoDB.jpg">
+<meta property="og:updated_time" content="2018-03-13T03:58:19.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongoDB学习记录">
 <meta name="twitter:description" content="摘要: mongoDB学习记录">
-<meta name="twitter:image" content="https://hua74ni.github.io/2018/03/13/mongoDB学习记录/images/mongoDB/mongoDB.jpg">
+<meta name="twitter:image" content="https://hua74ni.github.io/images/mongoDB/mongoDB.jpg">
 
 
 
@@ -469,7 +469,7 @@
 <li>CAP定理 </li>
 <li>高性能，高可用性和可伸缩性</li>
 </ul>
-<p><img src="./images/mongoDB/mongoDB.jpg" alt="mongoDB.png"></p>
+<p><img src="/images/mongoDB/mongoDB.jpg" alt="mongoDB.png"></p>
 <h2 id="mongoDB的基础命令"><a href="#mongoDB的基础命令" class="headerlink" title="mongoDB的基础命令"></a>mongoDB的基础命令</h2><ul>
 <li>mongo (默认进入mongo)</li>
 <li>show dbs (展示所有数据列表[默认存在的数据库有3个 admin、config、local])</li>
@@ -534,7 +534,9 @@ roles: [ { role: &quot;readWrite&quot;, db: &quot;foo&quot; },
 <li>db.collection.colletion.save()  集合保存方法</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">db.collection.save(</div><div class="line">   &lt;document&gt;,  <span class="comment">//文档数据</span></div><div class="line">   &#123;</div><div class="line">     writeConcern: &lt;document&gt; <span class="comment">//可选，抛出异常的级别。</span></div><div class="line">   &#125;</div><div class="line">)</div><div class="line">实例</div><div class="line"></div><div class="line">&gt; db.col.save(&#123;</div><div class="line">    <span class="string">"_id"</span> : ObjectId(<span class="string">"56064f89ade2f21f36b03136"</span>),</div><div class="line">    <span class="string">"title"</span> : <span class="string">"MongoDB"</span>,</div><div class="line">    <span class="string">"description"</span> : <span class="string">"MongoDB 是一个 Nosql 数据库"</span>,</div><div class="line">    <span class="string">"by"</span> : <span class="string">"Runoob"</span>,</div><div class="line">    <span class="string">"url"</span> : <span class="string">"http://www.runoob.com"</span>,</div><div class="line">    <span class="string">"tags"</span> : [</div><div class="line">            <span class="string">"mongodb"</span>,</div><div class="line">            <span class="string">"NoSQL"</span></div><div class="line">    ],</div><div class="line">    <span class="string">"likes"</span> : <span class="number">110</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>* MongoDB 删除文档</p>
+<ul>
+<li>MongoDB 删除文档</li>
+</ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">db.collection.remove(</div><div class="line">   &lt;query&gt;,  <span class="comment">//条件</span></div><div class="line">   &#123;</div><div class="line">     justOne: &lt;boolean&gt;, <span class="comment">//设为true/1，只删一个文档</span></div><div class="line">     writeConcern: &lt;document&gt; <span class="comment">//抛出异常级别</span></div><div class="line">   &#125;</div><div class="line">)</div><div class="line">实例</div><div class="line">&gt; db.col.remove(&#123;'title':'MongoDB 教程'&#125;)</div><div class="line">WriteResult(&#123; <span class="string">"nRemoved"</span> : <span class="number">2</span> &#125;)          <span class="comment">//删除了两条数据</span></div></pre></td></tr></table></figure>
 <ul>
 <li>remove() 方法已经过时了，现在官方推荐使用 deleteOne() 和 deleteMany() 方法。<br>如删除集合下全部文档：</li>
