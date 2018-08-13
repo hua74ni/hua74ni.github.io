@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="storm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="华仔的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="摘要: storm入门学习">
+<meta name="keywords" content="storm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="storm入门学习">
+<meta property="og:url" content="https://hua74ni.github.io/2018/08/09/storm入门学习/index.html">
+<meta property="og:site_name" content="华仔的博客">
+<meta property="og:description" content="摘要: storm入门学习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-13T03:23:17.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="storm入门学习">
+<meta name="twitter:description" content="摘要: storm入门学习">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hua74ni.github.io/2018/08/09/storm入门学习/"/>
+
+
+
+
+
+  <title>storm入门学习 | 华仔的博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">华仔的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你只有非常努力，才能看起来毫不费力</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hua74ni.github.io/2018/08/09/storm入门学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="华仔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="华仔的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">storm入门学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T16:25:58+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/storm/" itemprop="url" rel="index">
+                    <span itemprop="name">storm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4,596 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  20 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>摘要:</p>
+<pre><code>storm入门学习
+</code></pre><hr>
+<a id="more"></a>
+<h1 id="Storm-基础知识"><a href="#Storm-基础知识" class="headerlink" title="Storm 基础知识"></a>Storm 基础知识</h1><p>Storm 是一个分布式的，可靠的，容错的数据流处理系统。它会把工作任务委托给不同类型的组件，每个组件负责处理一项简单特定的任务。Storm 集群的输入流由一个被称作 spout 的组件管理，spout 把数据传递给 bolt， bolt 要么把数据保存到某种存储器，要么把数据传递给其它的 bolt。你可以想象一下，一个 Storm 集群就是在一连串的 bolt 之间转换 spout 传过来的数据。</p>
+<blockquote>
+<p>这里用一个简单的例子来说明这个概念。昨晚我在新闻节目里看到主持人在谈论政治人物和他们对于各种政治话题的立场。他们一直重复着不同的名字，而我开始考虑这些名字是否被提到了相同的次数，以及不同次数之间的偏差。</p>
+</blockquote>
+<p>在 Storm 集群中，有两类节点：主节点 master node 和工作节点 worker nodes。主节点运行着一个叫做 Nimbus 的守护进程。这个守护进程负责在集群中分发代码，为工作节点分配任务，并监控故障。Supervisor守护进程作为拓扑的一部分运行在工作节点上。一个 Storm 拓扑结构在不同的机器上运行着众多的工作节点。</p>
+<ul>
+<li>Storm 的特性<ul>
+<li>简化编程：如果你曾试着从零开始实现实时处理，你应该明白这是一件多么痛苦的事情。使用 Storm，复杂性被大大降低了。</li>
+<li>使用一门基于 JVM 的语言开发会更容易，但是你可以借助一个小的中间件，在 Storm 上使用任何语言开发。有现成的中间件可供选择，当然也可以自己开发中间件。</li>
+<li>容错：Storm 集群会关注工作节点状态，如果宕机了必要的时候会重新分配任务。</li>
+<li>可扩展：所有你需要为扩展集群所做的工作就是增加机器。Storm 会在新机器就绪时向它们分配任务。</li>
+<li>可靠的：所有消息都可保证至少处理一次。如果出错了，消息可能处理不只一次，不过你永远不会丢失消息。</li>
+<li>快速：速度是驱动 Storm 设计的一个关键因素。</li>
+<li>事务性：You can get exactly once messaging semantics for pretty much any computation. 你可以为几乎任何计算得到恰好一次消息语义。</li>
+</ul>
+</li>
+</ul>
+<h1 id="便于理解的demo"><a href="#便于理解的demo" class="headerlink" title="便于理解的demo"></a>便于理解的demo</h1><p>这个demo使用版本为0.6.0的storm。</p>
+<blockquote>
+<p>从works.txt文本中获取单词，将获取出来的单词进行数量的统计。<br>spout (WorkReader)  负责将单词从 works.txt文本中获取出来，获取的方式：文本每次获取一行，就将单词数量统计的任务往下分发。<br>这里创建2个bolt (WordNormalizer、WordCounter) ，一个负责格式化每个从spout获取到一行的单词，将一行的单词去掉前后空格，分解为一个个独立的单词，后分发给另外一个bolt，这个bolt用来做统计单词的数量。<br>启动项 TopologyMain</p>
+</blockquote>
+<h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line"></div><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">  xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</div><div class="line">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line"></div><div class="line">  &lt;groupId&gt;com.hdh&lt;/groupId&gt;</div><div class="line">  &lt;artifactId&gt;storm&lt;/artifactId&gt;</div><div class="line">  &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</div><div class="line">  &lt;packaging&gt;war&lt;/packaging&gt;</div><div class="line"></div><div class="line">  &lt;name&gt;storm Maven Webapp&lt;/name&gt;</div><div class="line">  &lt;!-- FIXME change it to the project&apos;s website --&gt;</div><div class="line">  &lt;url&gt;http://www.example.com&lt;/url&gt;</div><div class="line"></div><div class="line">  &lt;properties&gt;</div><div class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</div><div class="line">    &lt;maven.compiler.source&gt;1.7&lt;/maven.compiler.source&gt;</div><div class="line">    &lt;maven.compiler.target&gt;1.7&lt;/maven.compiler.target&gt;</div><div class="line">  &lt;/properties&gt;</div><div class="line"></div><div class="line">  &lt;dependencies&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;junit&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;junit&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;4.11&lt;/version&gt;</div><div class="line">      &lt;scope&gt;test&lt;/scope&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line"></div><div class="line">    &lt;!-- Storm Dependency --&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;storm&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;storm&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;0.6.0&lt;/version&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line"></div><div class="line">  &lt;/dependencies&gt;</div><div class="line"></div><div class="line">  &lt;build&gt;</div><div class="line">    &lt;finalName&gt;storm&lt;/finalName&gt;</div><div class="line">    &lt;pluginManagement&gt;&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</div><div class="line">      &lt;plugins&gt;</div><div class="line">        &lt;plugin&gt;</div><div class="line">          &lt;artifactId&gt;maven-clean-plugin&lt;/artifactId&gt;</div><div class="line">          &lt;version&gt;3.0.0&lt;/version&gt;</div><div class="line">        &lt;/plugin&gt;</div><div class="line">        &lt;!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging --&gt;</div><div class="line">        &lt;plugin&gt;</div><div class="line">          &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">          &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">          &lt;version&gt;2.3.2&lt;/version&gt;</div><div class="line">          &lt;configuration&gt;</div><div class="line">            &lt;source&gt;1.6&lt;/source&gt;</div><div class="line">            &lt;target&gt;1.6&lt;/target&gt;</div><div class="line">            &lt;compilerVersion&gt;1.6&lt;/compilerVersion&gt;</div><div class="line">          &lt;/configuration&gt;</div><div class="line">        &lt;/plugin&gt;</div><div class="line">      &lt;/plugins&gt;</div><div class="line">    &lt;/pluginManagement&gt;</div><div class="line">  &lt;/build&gt;</div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
+<h2 id="WorkReader"><a href="#WorkReader" class="headerlink" title="WorkReader"></a>WorkReader</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">public class WorkReader implements IRichSpout &#123;</div><div class="line"></div><div class="line">    private SpoutOutputCollector collector;</div><div class="line">    private FileReader fileReader;</div><div class="line">    private boolean computed = false;</div><div class="line">    private TopologyContext context;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean isDistributed() &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) &#123;</div><div class="line"></div><div class="line">        this.context = topologyContext;</div><div class="line">        this.collector = spoutOutputCollector;</div><div class="line">        try &#123;</div><div class="line">            this.fileReader = new FileReader(map.get(&quot;wordsFile&quot;).toString());</div><div class="line">        &#125; catch (FileNotFoundException e) &#123;</div><div class="line">            throw new RuntimeException(&quot;Error reading file [&quot;+map.get(&quot;wordFile&quot;)+&quot;]&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void close() &#123;&#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 这个方法做的惟一一件事情就是分发文件中的文本行</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void nextTuple() &#123;</div><div class="line">        /**</div><div class="line">         * 这个方法会不断的被调用，直到整个文件都读完了，我们将等待并返回。</div><div class="line">         */</div><div class="line">        if (computed)&#123;</div><div class="line">            try &#123;</div><div class="line">                Thread.sleep(1);</div><div class="line">            &#125; catch (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String str;</div><div class="line"></div><div class="line">        BufferedReader bufferedReader = new BufferedReader(fileReader);</div><div class="line">        try&#123;</div><div class="line"></div><div class="line">            while((str = bufferedReader.readLine()) != null)&#123;</div><div class="line">                /**</div><div class="line">                 * 按行发布一个新值</div><div class="line">                 */</div><div class="line">                this.collector.emit(new Values(str));</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;catch (Exception e)&#123;</div><div class="line">            throw new RuntimeException(&quot;Error reading tuple&quot;,e);</div><div class="line">        &#125;finally &#123;</div><div class="line">            computed = true;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void ack(Object msgId) &#123;</div><div class="line">        System.out.println(&quot;OK:&quot; + msgId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void fail(Object msgId) &#123;</div><div class="line">        System.out.println(&quot;FAIL:&quot; + msgId);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 声明输入域&quot;word&quot;</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123;</div><div class="line"></div><div class="line">        outputFieldsDeclarer.declare(new Fields(&quot;line&quot;));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="WordNormalizer"><a href="#WordNormalizer" class="headerlink" title="WordNormalizer"></a>WordNormalizer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">public class WordNormalizer implements IRichBolt &#123;</div><div class="line"></div><div class="line">    private OutputCollector collector;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) &#123;</div><div class="line"></div><div class="line">        this.collector = outputCollector;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * *bolt*从单词文件接收到文本行，并标准化它。</div><div class="line">     * 文本行会全部转化成小写，并切分它，从中得到所有单词。</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void execute(Tuple tuple) &#123;</div><div class="line"></div><div class="line">        String sentence = tuple.getString(0);</div><div class="line">        String [] words = sentence.split(&quot; &quot;);</div><div class="line">        for (String word:</div><div class="line">             words) &#123;</div><div class="line">            word = word.trim();</div><div class="line">            if(!word.isEmpty())&#123;</div><div class="line">                //发布这个单词</div><div class="line">                word = word.toLowerCase();</div><div class="line">                /**</div><div class="line">                 * 调用中发布0~N元组</div><div class="line">                 * 如果这个方法在一次调用中接收到句子 “This is the Storm book”，它将会发布五个元组。</div><div class="line">                 */</div><div class="line">                collector.emit(new Values(word));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 收到 spout的分配的任务</div><div class="line">         * 对元组做出应答</div><div class="line">         */</div><div class="line">        collector.ack(tuple);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void cleanup() &#123; &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123;</div><div class="line"></div><div class="line">        // 声明输出域</div><div class="line">        outputFieldsDeclarer.declare(new Fields(&quot;word&quot;));</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="WordCounter"><a href="#WordCounter" class="headerlink" title="WordCounter"></a>WordCounter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">public class WordCounter implements IRichBolt &#123;</div><div class="line"></div><div class="line">    Integer id;</div><div class="line">    String name;</div><div class="line">    Map&lt;String,Integer&gt; counters;</div><div class="line">    private OutputCollector collector;</div><div class="line"></div><div class="line">    private static final String SIGNALS = &quot;signals&quot;;</div><div class="line">    private static final String ACTION = &quot;refreshCache&quot;;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) &#123;</div><div class="line">        this.counters = new HashMap&lt;String, Integer&gt;();</div><div class="line">        this.name = topologyContext.getThisComponentId();</div><div class="line">        this.id = topologyContext.getThisTaskId();</div><div class="line">        this.collector = outputCollector;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void execute(Tuple tuple) &#123;</div><div class="line"></div><div class="line">        String str = null;</div><div class="line"></div><div class="line">        try&#123;</div><div class="line">            str = tuple.getStringByField(&quot;word&quot;);</div><div class="line">        &#125;catch (IllegalArgumentException e) &#123;</div><div class="line">            //Do nothing</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        if(str != null)&#123;</div><div class="line"></div><div class="line">            if(!this.counters.containsKey(str))&#123;</div><div class="line">                counters.put(str,1);</div><div class="line">            &#125;else&#123;</div><div class="line">                Integer c = counters.get(str);</div><div class="line">                counters.put(str,c + 1);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        // 全部数据流组 清理计算器操作</div><div class="line">//        else &#123;</div><div class="line">//</div><div class="line">//            if((SIGNALS).equals(tuple.getSourceGlobalStreamid().get_streamId()))&#123;</div><div class="line">//                str =  tuple.getStringByField(&quot;action&quot;);</div><div class="line">//                if(ACTION.equals(str))&#123;</div><div class="line">//                    counters.clear();</div><div class="line">//                &#125;</div><div class="line">//            &#125;</div><div class="line">//</div><div class="line">//        &#125;</div><div class="line"></div><div class="line">        //对元组作为应答</div><div class="line">        collector.ack(tuple);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 通常情况下，当拓扑关闭时，你应当使用 cleanup() 方法关闭活动的连接和其它资源。</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void cleanup() &#123;</div><div class="line">        System.out.println(&quot;-- 单词数 【&quot; + name + &quot;-&quot; + id +&quot;】 --&quot;);</div><div class="line">        for(Map.Entry&lt;String,Integer&gt; entry : counters.entrySet())&#123;</div><div class="line">            System.out.println(entry.getKey() + &quot;: &quot; + entry.getValue());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##　TopologyMain </p>
+<blockquote>
+<p>拓扑启动项</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">public class TopologyMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line"></div><div class="line">        // 定义拓扑</div><div class="line">        TopologyBuilder builder = new TopologyBuilder();</div><div class="line">        builder.setSpout(&quot;word-reader&quot;,new WorkReader());</div><div class="line"></div><div class="line">        // 全部数据流组</div><div class="line">        builder.setSpout(&quot;signals-spout&quot;, new SignalsSpout());</div><div class="line">        /** 随机数据流组指定数据源</div><div class="line">         * shuffleGrouping 随机消费 来自 word-reader的数据</div><div class="line">         *</div><div class="line">         * note: 每个 InputDeclarer 可以有一个以上的数据源，而且每个数据源可以分到不同的组。</div><div class="line">         */</div><div class="line">        builder.setBolt(&quot;word-normalizer&quot;,new WordNormalizer())</div><div class="line">                // 自定义数据流组</div><div class="line">                .customGrouping(&quot;word-reader&quot; , new ModuleGrouping());</div><div class="line">//                .shuffleGrouping(&quot;word-reader&quot;);</div><div class="line">        /** 域数据流组</div><div class="line">         * 域数据流组允许你基于元组的一个或多个域控制如何把元组发送给 com.storm1.banktransactions。</div><div class="line">         * 单词计数器的例子，如果你用 word 域为数据流分组，</div><div class="line">         * word-normalizer bolt 将只会把相同单词的元组发送给同一个 word-counterbolt 实例。</div><div class="line">         * fieldsGrouping 声明了 &quot;word&quot;的控制域</div><div class="line">         */</div><div class="line">        builder.setBolt(&quot;word-counter&quot;,new WordCounter(),2)</div><div class="line">                .fieldsGrouping(&quot;word-normalizer&quot;,new Fields(&quot;word&quot;));</div><div class="line">        // 全部数据流组</div><div class="line">//                .allGrouping(&quot;signals-spout&quot; , &quot;signals&quot;);</div><div class="line">//        builder.setBolt(&quot;word-counter&quot;,new WordCounter(),2).shuffleGrouping(&quot;word-normalizer&quot;);</div><div class="line"></div><div class="line">        //配置</div><div class="line">        Config config = new Config();</div><div class="line">//        config.put(&quot;wordsFile&quot;,args[0]);</div><div class="line">        config.put(&quot;wordsFile&quot;,&quot;src/main/resources/words.txt&quot;);</div><div class="line">        config.setDebug(false);</div><div class="line"></div><div class="line">        //运行拓扑</div><div class="line">        config.put(Config.TOPOLOGY_MAX_SPOUT_PENDING, 1);</div><div class="line">        LocalCluster cluster = new LocalCluster();</div><div class="line">        cluster.submitTopology(&quot;Getting-started-Topologie&quot;, config, builder.createTopology());</div><div class="line">        Thread.sleep(2000);</div><div class="line">        cluster.shutdown();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Storm知识点"><a href="#Storm知识点" class="headerlink" title="Storm知识点"></a>Storm知识点</h1><h2 id="Storm-拓扑"><a href="#Storm-拓扑" class="headerlink" title="Storm 拓扑"></a>Storm 拓扑</h2><p><strong>数据流组</strong><br>设计一个拓扑时，你要做的最重要的事情之一就是定义如何在各组件之间交换数据（数据流是如何被 bolts 消费的）。一个据数流组指定了每个 bolt 会消费哪些数据流，以及如何消费它们。</p>
+<blockquote>
+<p>NOTE：一个节点能够发布一个以上的数据流，一个数据流组允许我们选择接收哪个。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">builder.setBolt(&quot;word-normalizer&quot;, new WordNormalizer())</div><div class="line">           .shuffleGrouping(&quot;word-reader&quot;);</div></pre></td></tr></table></figure>
+<p>在前面的代码块里，一个 bolt 由 TopologyBuilder 对象设定， 然后使用随机数据流组指定数据源。数据流组通常将数据源组件的 ID 作为参数，取决于数据流组的类型不同还有其它可选参数。</p>
+<blockquote>
+<p>NOTE：每个 InputDeclarer 可以有一个以上的数据源，而且每个数据源可以分到不同的组。</p>
+</blockquote>
+<ul>
+<li><p>随机数据流组 (shuffleGrouping)<br>随机流组是最常用的数据流组。它只有一个参数（数据源组件），并且数据源会向随机选择的 bolt 发送元组，保证每个消费者收到近似数量的元组。<br>随机数据流组用于数学计算这样的原子操作。然而，如果操作不能被随机分配，就像第二章为单词计数的例子，你就要考虑其它分组方式了。</p>
+</li>
+<li><p>域数据流组 (fieldsGrouping)<br>域数据流组允许你基于元组的一个或多个域控制如何把元组发送给 bolts。 它保证拥有相同域组合的值集发送给同一个 bolt。 回到单词计数器的例子，如果你用 word 域为数据流分组，word-normalizer bolt 将只会把相同单词的元组发送给同一个 word-counterbolt 实例。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">TopologyMain:</div><div class="line"></div><div class="line">builder.setBolt(&quot;word-counter&quot;, new WordCounter(),2)</div><div class="line">           .fieldsGrouping(&quot;word-normalizer&quot;, new Fields(&quot;word&quot;));</div><div class="line">           </div><div class="line">WordNormalizer:</div><div class="line">// 声明输出域</div><div class="line">        outputFieldsDeclarer.declare(new Fields(&quot;word&quot;));</div></pre></td></tr></table></figure>
+<blockquote>
+<p>NOTE: 在域数据流组中的所有域集合必须存在于数据源的域声明中。</p>
+</blockquote>
+<ul>
+<li>全部数据流组 (allGrouping)<br>全部数据流组，为每个接收数据的实例复制一份元组副本。这种分组方式用于向 bolts 发送信号。比如，你要刷新缓存，你可以向所有的 bolts 发送一个刷新缓存信号。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">SignalsSpout implements IRichSpout</div><div class="line">...</div><div class="line">@Override</div><div class="line">public void nextTuple() &#123;</div><div class="line"></div><div class="line">    collector.emit(&quot;signals&quot;,new Values(&quot;refreshCache&quot;));</div><div class="line">    try &#123;</div><div class="line">        Thread.sleep(1000);</div><div class="line">    &#125; catch (InterruptedException e) &#123;&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line">@Override</div><div class="line">public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123;</div><div class="line"></div><div class="line">    outputFieldsDeclarer.declareStream(&quot;signals&quot;,new Fields(&quot;action&quot;));</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">WordCounter</div><div class="line"></div><div class="line">@Override</div><div class="line">public void execute(Tuple tuple) &#123;</div><div class="line"></div><div class="line">    String str = null;</div><div class="line"></div><div class="line">    try&#123;</div><div class="line">        str = tuple.getStringByField(&quot;word&quot;);</div><div class="line">    &#125;catch (IllegalArgumentException e) &#123;</div><div class="line">        //Do nothing</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(str != null)&#123;</div><div class="line"></div><div class="line">        if(!this.counters.containsKey(str))&#123;</div><div class="line">            counters.put(str,1);</div><div class="line">        &#125;else&#123;</div><div class="line">            Integer c = counters.get(str);</div><div class="line">            counters.put(str,c + 1);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    // 全部数据流组 清理计算器操作</div><div class="line">    else &#123;</div><div class="line"></div><div class="line">        if((SIGNALS).equals(tuple.getSourceGlobalStreamid().get_streamId()))&#123;</div><div class="line">            str =  tuple.getStringByField(&quot;action&quot;);</div><div class="line">            if(ACTION.equals(str))&#123;</div><div class="line">                counters.clear();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //对元组作为应答</div><div class="line">    collector.ack(tuple);</div><div class="line">&#125;</div><div class="line"></div><div class="line">TopologyMain</div><div class="line"></div><div class="line">builder.setBolt(&quot;word-counter&quot;, new WordCounter(),2)</div><div class="line">           .fieldsGroupint(&quot;word-normalizer&quot;,new Fields(&quot;word&quot;))</div><div class="line">           .allGrouping(&quot;signals-spout&quot;,&quot;signals&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li>自定义数据流组<br>你可以通过实现 backtype.storm.grouping.CustormStreamGrouping 接口创建自定义数据流组，让你自己决定哪些 bolt 接收哪些元组。</li>
+</ul>
+<blockquote>
+<p>修改单词计数器示例，使首字母相同的单词由同一个 bolt 接收。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">public class ModuleGrouping implements CustomStreamGrouping, Serializable &#123;</div><div class="line"></div><div class="line">    int numTasks = 0;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void prepare(int i) &#123;</div><div class="line">        this.numTasks = i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;Integer&gt; taskIndices(Tuple tuple) &#123;</div><div class="line"></div><div class="line">        List&lt;Integer&gt; boltIds = new ArrayList&lt;Integer&gt;();</div><div class="line">        List&lt;Object&gt; values = tuple.getValues();</div><div class="line"></div><div class="line">        if(values.size()&gt;0)&#123;</div><div class="line">            String str = values.get(0).toString();</div><div class="line">            if(str.isEmpty())&#123;</div><div class="line">                boltIds.add(0);</div><div class="line">            &#125;else&#123;</div><div class="line">                boltIds.add(str.charAt(0) % numTasks);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return boltIds;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这是一个 CustomStreamGrouping 的简单实现，在这里我们采用单词首字母字符的整数值与任务数的余数，决定接收元组的 bolt。<br>按下述方式 word-normalizer 修改即可使用这个自定义数据流组。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">builder.setBolt(&quot;word-normalizer&quot;, new WordNormalizer())</div><div class="line">          .customGrouping(&quot;word-reader&quot;, new ModuleGrouping());</div></pre></td></tr></table></figure>
+<ul>
+<li><p>直接数据流组<br>这是一个特殊的数据流组，数据源可以用它决定哪个组件接收元组。与前面的例子类似，数据源将根据单词首字母决定由哪个 bolt 接收元组。要使用直接数据流组，在 WordNormalizer bolt 中，使用 emitDirect 方法代替 emit。</p>
+</li>
+<li><p>全局数据流组<br>全局数据流组把所有数据源创建的元组发送给单一目标实例（即拥有最低 ID 的任务）。</p>
+</li>
+</ul>
+<h2 id="Storm-Spouts"><a href="#Storm-Spouts" class="headerlink" title="Storm Spouts"></a>Storm Spouts</h2><p><strong>可靠的消息 VS 不可靠的消息</strong></p>
+<p>在设计拓扑结构时，始终在头脑中记着的一件重要事情就是消息的可靠性。当有无法处理的消息时，你就要决定该怎么办，以及作为一个整体的拓扑结构该做些什么。举个例子，在处理银行存款时，不要丢失任何事务报文就是很重要的事情。但是如果你要统计分析数以百万的 tweeter 消息，即使有一条丢失了，仍然可以认为你的结果是准确的。</p>
+<p>对于 Storm 来说，根据每个拓扑的需要担保消息的可靠性是开发者的责任。这就涉及到消息可靠性和资源消耗之间的权衡。高可靠性的拓扑必须管理丢失的消息，必然消耗更多资源；可靠性较低的拓扑可能会丢失一些消息，占用的资源也相应更少。不论选择什么样的可靠性策略，Storm 都提供了不同的工具来实现它。</p>
+<p>要在 spout 中管理可靠性，你可以在分发时包含一个元组的消息 ID（collector.emit(new Values(…),tupleId)）。在一个元组被正确的处理时调用 <strong>ack</strong> 方法，而在失败时调用 <strong>fail</strong> 方法。当一个元组被所有的靶 bolt 和锚 bolt 处理过，即可判定元组处理成功（你将在第5章学到更多锚 bolt 知识）。</p>
+<p><strong>发生下列情况之一时为元组处理失败：</strong></p>
+<ul>
+<li>提供数据的 spout 调用 collector.fail(tuple)</li>
+<li>处理时间超过配置的超时时间</li>
+</ul>
+<p><strong>让我们来看一个例子。想象你正在处理银行事务，需求如下：</strong></p>
+<ul>
+<li>如果事务失败了，重新发送消息</li>
+<li>如果失败了太多次，终结拓扑运行</li>
+</ul>
+<h3 id="pom-xml-1"><a href="#pom-xml-1" class="headerlink" title="pom.xml"></a>pom.xml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line"></div><div class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</div><div class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</div><div class="line"></div><div class="line">    &lt;groupId&gt;com.hdh&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;storm1&lt;/artifactId&gt;</div><div class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</div><div class="line">    &lt;packaging&gt;war&lt;/packaging&gt;</div><div class="line"></div><div class="line">    &lt;name&gt;storm1 Maven Webapp&lt;/name&gt;</div><div class="line">    &lt;!-- FIXME change it to the project&apos;s website --&gt;</div><div class="line">    &lt;url&gt;http://www.example.com&lt;/url&gt;</div><div class="line"></div><div class="line">    &lt;properties&gt;</div><div class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</div><div class="line">        &lt;maven.compiler.source&gt;1.7&lt;/maven.compiler.source&gt;</div><div class="line">        &lt;maven.compiler.target&gt;1.7&lt;/maven.compiler.target&gt;</div><div class="line">    &lt;/properties&gt;</div><div class="line"></div><div class="line">    &lt;dependencies&gt;</div><div class="line"></div><div class="line">        &lt;!-- Storm Dependency --&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;storm&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;storm&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;0.7.1&lt;/version&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line"></div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;commons-http&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;commons-http&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;1.1&lt;/version&gt;</div><div class="line">            &lt;type&gt;jar&lt;/type&gt;</div><div class="line">            &lt;scope&gt;compile&lt;/scope&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">        &lt;dependency&gt;</div><div class="line">            &lt;groupId&gt;redis.clients&lt;/groupId&gt;</div><div class="line">            &lt;artifactId&gt;jedis&lt;/artifactId&gt;</div><div class="line">            &lt;version&gt;2.0.0&lt;/version&gt;</div><div class="line">            &lt;type&gt;jar&lt;/type&gt;</div><div class="line">            &lt;scope&gt;compile&lt;/scope&gt;</div><div class="line">        &lt;/dependency&gt;</div><div class="line">    &lt;/dependencies&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;build&gt;</div><div class="line">        &lt;finalName&gt;storm1&lt;/finalName&gt;</div><div class="line">        &lt;pluginManagement&gt;&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</div><div class="line">            &lt;plugins&gt;</div><div class="line">                &lt;plugin&gt;</div><div class="line">                    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">                    &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;</div><div class="line">                    &lt;version&gt;2.3.2&lt;/version&gt;</div><div class="line">                    &lt;configuration&gt;</div><div class="line">                        &lt;source&gt;1.6&lt;/source&gt;</div><div class="line">                        &lt;target&gt;1.6&lt;/target&gt;</div><div class="line">                    &lt;/configuration&gt;</div><div class="line">                &lt;/plugin&gt;</div><div class="line">            &lt;/plugins&gt;</div><div class="line">        &lt;/pluginManagement&gt;</div><div class="line">    &lt;/build&gt;</div><div class="line">&lt;/project&gt;</div></pre></td></tr></table></figure>
+<h3 id="TransactionsSpouts-java"><a href="#TransactionsSpouts-java" class="headerlink" title="TransactionsSpouts.java"></a>TransactionsSpouts.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">public class TransactionsSpouts extends BaseRichSpout &#123;</div><div class="line"></div><div class="line">    static Logger LOG = Logger.getLogger(TransactionsSpouts.class);</div><div class="line"></div><div class="line">    // 同个元组最大错误次数</div><div class="line">    private static final Integer MAX_FAILS = 2;</div><div class="line">    // 存放所有消息元组</div><div class="line">    Map&lt;Integer,String&gt; messages;</div><div class="line">    // 存放每个元组消息发送错误的次数</div><div class="line">    Map&lt;Integer,Integer&gt; transactionFailureCount;</div><div class="line">    // 待发送消息的元组</div><div class="line">    Map&lt;Integer,String&gt; toSend;</div><div class="line">    private SpoutOutputCollector collector;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) &#123;</div><div class="line"></div><div class="line">        Random random = new Random();</div><div class="line">        this.messages = new HashMap&lt;Integer, String&gt;();</div><div class="line">        this.transactionFailureCount = new HashMap&lt;Integer, Integer&gt;();</div><div class="line">        this.toSend = new HashMap&lt;Integer, String&gt;();</div><div class="line"></div><div class="line">        for(int i = 0; i&lt; 100; i++)&#123;</div><div class="line">            messages.put(i, &quot;transaction_&quot;+random.nextInt());</div><div class="line">            transactionFailureCount.put(i, 0);</div><div class="line">        &#125;</div><div class="line">        toSend.putAll(messages);</div><div class="line">        this.collector = spoutOutputCollector;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void close() &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void nextTuple() &#123;</div><div class="line"></div><div class="line">        if(!toSend.isEmpty())&#123;</div><div class="line">            for (Map.Entry&lt;Integer,String&gt; transactionEntry  : toSend.entrySet())&#123;</div><div class="line"></div><div class="line">                Integer transactionId = transactionEntry.getKey();</div><div class="line">                String transactionMessage = transactionEntry.getValue();</div><div class="line">                collector.emit(new Values(transactionMessage),transactionId);</div><div class="line">            &#125;</div><div class="line">            toSend.clear();</div><div class="line">        &#125;</div><div class="line">        try &#123;</div><div class="line">            Thread.sleep(1);</div><div class="line">        &#125; catch (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * spout发送消息 得到应答</div><div class="line">     * 在存放消息元组中 删除对应应答的消息msgId</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void ack(Object msgId) &#123;</div><div class="line"></div><div class="line">        messages.remove(msgId);</div><div class="line">        LOG.info(&quot;Message fully processed [&quot;+msgId+&quot;]&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * spout发送消息 得到失败</div><div class="line">     * 如果同一个消息元组发送失败次数2次 即停止storm</div><div class="line">     * 将发送失败的消息元组重新发送，从message中获取对应数据 存放于toSend中，等待重新发送</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    public void fail(Object msgId) &#123;</div><div class="line"></div><div class="line">        if(!transactionFailureCount.containsKey(msgId))&#123;</div><div class="line">            throw new RuntimeException(&quot;Error, transaction id not found [&quot;+msgId+&quot;]&quot;);</div><div class="line">        &#125;</div><div class="line">        Integer transactionId = (Integer) msgId;</div><div class="line"></div><div class="line">        //Get the transactions fail</div><div class="line">        Integer failures = transactionFailureCount.get(transactionId) + 1;</div><div class="line">        if(failures &gt;= MAX_FAILS)&#123;</div><div class="line">            throw new RuntimeException(&quot;Error, transaction id [&quot;+transactionId+&quot;] has had many errors [&quot;+failures+&quot;]&quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        transactionFailureCount.put(transactionId, failures);</div><div class="line">        toSend.put(transactionId,messages.get(transactionId));</div><div class="line">        LOG.info(&quot;Re-sending message [&quot;+msgId+&quot;]&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123;</div><div class="line">        outputFieldsDeclarer.declare(new Fields(&quot;transactionMessage&quot;));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="RandomFailureBolt-java"><a href="#RandomFailureBolt-java" class="headerlink" title="RandomFailureBolt.java"></a>RandomFailureBolt.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class RandomFailureBolt extends BaseRichBolt &#123;</div><div class="line">    </div><div class="line">    private static final Integer MAX_PERCENT_FAIL = 80;</div><div class="line">    Random random = new Random  ();</div><div class="line">    private OutputCollector collector;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) &#123;</div><div class="line">        this.collector = outputCollector;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void execute(Tuple input) &#123;</div><div class="line">        </div><div class="line">        // 模拟 百分之80的 消息发送元组发送失败</div><div class="line">        // 百分之20的消息元组发送成功</div><div class="line">        Integer r = random.nextInt(100);</div><div class="line">        if(r &gt; MAX_PERCENT_FAIL)&#123;</div><div class="line">            collector.ack(input);</div><div class="line">        &#125;else&#123;</div><div class="line">            collector.fail(input);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void declareOutputFields(OutputFieldsDeclarer outputFieldsDeclarer) &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="TopologyMain-java"><a href="#TopologyMain-java" class="headerlink" title="TopologyMain.java"></a>TopologyMain.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class TopologyMain &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) throws InterruptedException &#123;</div><div class="line"></div><div class="line">        TopologyBuilder topologyBuilder = new TopologyBuilder();</div><div class="line">        topologyBuilder.setSpout(&quot;transactions-spout&quot;,new TransactionsSpouts());</div><div class="line">        topologyBuilder.setBolt(&quot;random-failure-bolt&quot;,new RandomFailureBolt())</div><div class="line">                .shuffleGrouping(&quot;transactions-spout&quot;);</div><div class="line"></div><div class="line">        LocalCluster cluster = new LocalCluster();</div><div class="line">        Config config = new Config();</div><div class="line">        config.setDebug(true);</div><div class="line">        cluster.submitTopology(&quot;transactions-test&quot;,config,topologyBuilder.createTopology());</div><div class="line">        while (true)&#123;</div><div class="line">            //Will wait for a fail</div><div class="line">            Thread.sleep(1000);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Storm-Bolts"><a href="#Storm-Bolts" class="headerlink" title="Storm Bolts"></a>Storm Bolts</h2><ul>
+<li>Bolt 生命周期<br>Bolt 是这样一种组件，它把元组作为输入，然后产生新的元组作为输出。实现一个 bolt 时，通常需要实现 IRichBolt 接口。Bolts 对象由客户端机器创建，序列化为拓扑，并提交给集群中的主机。然后集群启动工人进程反序列化 bolt，调用 prepare<em>**</em>，最后开始处理元组。</li>
+</ul>
+<blockquote>
+<p>NOTE:要创建一个 bolt 对象，它通过构造器参数初始化成员属性，bolt 被提交到集群时，这些属性值会随着一起序列化。</p>
+</blockquote>
+<ul>
+<li><p>Bolt 结构</p>
+<pre><code>declareOutputFields(OutputFieldsDeclarer declarer)
+为bolt声明输出模式
+prepare(java.util.Map stormConf, TopologyContext context, OutputCollector collector)
+仅在bolt开始处理元组之前调用
+execute(Tuple input)
+处理输入的单个元组
+cleanup()
+在bolt即将关闭时调用 
+</code></pre></li>
+<li><p>多数据流<br>一个 bolt 可以使用 emit(streamId, tuple) 把元组分发到多个流，其中参数 streamId 是一个用来标识流的字符串。然后，你可以在 TopologyBuilder 决定由哪个流订阅它。</p>
+</li>
+<li><p>多锚定<br>为了用 bolt 连接或聚合数据流，你需要借助内存缓冲元组。为了在这一场景下确保消息完成，你不得不把流锚定到多个元组上。可以向 emit 方法传入一个元组列表来达成目的。</p>
+</li>
+<li><p>使用 IBasicBolt 自动确认<br>你可能已经注意到了，在许多情况下都需要消息确认。简单起见，Storm 提供了另一个用来实现bolt 的接口，IBasicBolt。对于该接口的实现类的对象，会在执行 execute 方法之后自动调用 ack 方法。</p>
+</li>
+</ul>
+<p>Storm学习入门到此为止，本次学习引用了<a href="https://www.w3cschool.cn/storm/" target="_blank" rel="noopener">w3cschool-Storm 入门教程</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}"
+   style="font-size: 18px;border-radius: 5px;width: 80px;height: 35px;display: inline-block;color: #fff;background: #f44336;font-variant: normal;font-weight: 400;font-stretch: normal;line-height: 35px" >
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block" style="width: 180px;max-width: 100%;margin: 0.8em 2em 0 2em;">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="华仔 WeChat Pay"/>
+        <p>微信</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block" style="width: 180px;max-width: 100%;margin: 0.8em 2em 0 2em;">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="华仔 Alipay"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/storm/" rel="tag"># storm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/kafka安装及使用/" rel="next" title="kafka安装及使用">
+                <i class="fa fa-chevron-left"></i> kafka安装及使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/10/Storm集成kafka应用/" rel="prev" title="Storm集成kafka应用">
+                Storm集成kafka应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="华仔" />
+          <p class="site-author-name" itemprop="name">华仔</p>
+           
+              <p class="site-description motion-element" itemprop="description">你只有非常努力，才能看起来毫不费力</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hua74ni" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/3770189032/profile?profile_ftype=1&is_hot=1#_0" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-dong-hua-61/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      zhihu
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/?request_context=signup" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://codestuding.github.io/" title="猩猩大人的 blog" target="_blank">猩猩大人的 blog</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Storm-基础知识"><span class="nav-number">1.</span> <span class="nav-text">Storm 基础知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#便于理解的demo"><span class="nav-number">2.</span> <span class="nav-text">便于理解的demo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-xml"><span class="nav-number">2.1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WorkReader"><span class="nav-number">2.2.</span> <span class="nav-text">WorkReader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordNormalizer"><span class="nav-number">2.3.</span> <span class="nav-text">WordNormalizer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordCounter"><span class="nav-number">2.4.</span> <span class="nav-text">WordCounter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Storm知识点"><span class="nav-number">3.</span> <span class="nav-text">Storm知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm-拓扑"><span class="nav-number">3.1.</span> <span class="nav-text">Storm 拓扑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm-Spouts"><span class="nav-number">3.2.</span> <span class="nav-text">Storm Spouts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pom-xml-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransactionsSpouts-java"><span class="nav-number">3.2.2.</span> <span class="nav-text">TransactionsSpouts.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RandomFailureBolt-java"><span class="nav-number">3.2.3.</span> <span class="nav-text">RandomFailureBolt.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TopologyMain-java"><span class="nav-number">3.2.4.</span> <span class="nav-text">TopologyMain.java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm-Bolts"><span class="nav-number">3.3.</span> <span class="nav-text">Storm Bolts</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">华仔</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
